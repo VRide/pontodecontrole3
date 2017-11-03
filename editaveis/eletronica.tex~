@@ -92,16 +92,6 @@ No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um a
 
 \subsection{Conversor Analógico-Digital ADC0809}
 
-	Para fazer a conversão analógico-digital dos dados de frenagem e posição angular do guidão foi usado o conversor analógico-digital ADC0809, devido ao Raspberry Pi 3 não possuir conversores analógico-digitais. O ADC0809 é um conversor de 8 bits de resolução e frequência de amostragem de 10 kHz. O conversor conta com 8 canais de entrada independentes e saída paralela de 8 bits. 
-
-	O conversor conta com seis entradas de controle. Três entradas de seleção do endereço de entrada (\textir{ADD A – Address A, ADD B – Address B e ADD C – Address C}), uma entrada para atualizar o endereço do canal setado nas seletoras (\textit{ALE – Address Latch Enable}), uma entrada para habilitar a saída (\textit{OE – Output Enable}) e uma entrada para dar início a conversão (\textit{START}).
-
-	O conversor também tem um sinal de interrupção (EOC – \textit{End of Conversion}) que indica quando a conversão iniciou e termino. O sinal quando não há conversão fica em nível alto, quando uma conversão é iniciada o sinal vai para nível baixo e quando a conversão é finalizada o sinal volta para nível alto, indicando o fim de conversão.
-
-	Há ainda os sinais de referência do sinal de entrada que servem para condicionar o sinal de entrada para máximo aproveitamento de resolução e o sinal de \textit{clock} de clock com uma frequência de 500 kHz. Este sinal de \textit{clock} foi gerado com o LM555 em modo ástavel. 
-
-	Para fazer uma conversão primeiro deve se definir o canal através de seu endereço usando entradas de controle seletoras, depois atualizar o endereço com a entrada de controle \textit{ALE} e setar o sinal de \textit{START}. Após isso basta esperar a interrupção \textit{EOC} acusar fim de conversão e habilitar a saída com \textit{OE} para entregar o resultado da conversão a GPIO do Raspberry Pi 3.
-
 
 
 \section{Circuitos de Aquisição de Dados}
