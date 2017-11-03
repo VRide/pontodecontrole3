@@ -1,0 +1,122 @@
+
+
+O Raspberry foi programado para atuar como duas interfaces principais. Como access point da rede wireless e como broker do protocolo MQTT. As configurações utilizadas para tal função foram:
+
+\begin{enumerate}
+    \item Atualização e instalação dos pacotes:
+        \begin{itemize}
+            \item \$ sudo apt-get update
+            \item \$ sudo apt-get install isc-dhcp-server
+            \item \$ sudo apt-get install hostapd
+            \item \$ sudo apt-get install mosquitto
+            \item \$ sudo apt-get install mosquitto-dev
+        \end{itemize}
+    
+    \item No arquivo \textit{/etc/dhcp/dhcp.conf} fazer as seguintes alterações:
+        \begin{itemize}
+            \item Comentar com # as linhas:
+                option domain-name "example.org";
+                
+                option domain-name-servers 
+                
+                ns1.example.org, ns2.example.org
+            \item Descomentar as linhas:
+                authoritative
+            \item Escrever no fim do arquivo:
+
+                subnet 10.0.0.0 netmask 255.255.255.0 $\{$
+
+                \hspace*{6mm}    range 10.0.0.2 10.0.0.255;
+                
+                \hspace*{6mm}    option domain-name-servers 8.8.8.8;
+                
+                \hspace*{6mm}    option domain-name "local";
+                
+                \hspace*{6mm}    option routers 10.0.0.1;
+                
+                \hspace*{6mm}    option broadcast-address 10.0.0.255;
+                
+                \hspace*{6mm}    default-lease-time 600;
+                
+                \hspace*{6mm}    max-lease-time 7200;
+                $\}$
+        \end{itemize}
+    \item No arquivo \textit{/etc/network/interfaces} colocar no arquivo:
+        auto lo
+        
+        iface lo inet loopback
+        
+        iface eth0 inet dhcp
+        
+        allow-hotplug wlan0
+        
+        iface wlan0 inet static
+        
+            \hspace*{6mm} address 10.0.0.1
+        
+            \hspace*{6mm} netmask 255.255.255.0
+        
+	    \hspace*{6mm} gateway 10.0.0.1
+
+    \item Criar o arquivo \textit{/etc/hostapd/hostapd.conf} com o seguinte texto:
+
+        interface=wlan0
+
+        driver=nl80211
+
+        ssid=bikerift\_broker
+
+        country\_code=US
+
+        hw\_mode=g
+
+        channel=6
+
+        macaddr\_acl=0
+
+        auth\_algs=1
+
+        ignore\_broadcast\_ssid=0
+
+        wpa=2
+
+        wpa\_passphrase=bikerift 
+
+        wpa\_key\_mgmt=WPA-PSK
+
+        wpa\_pairwise=CCMP
+
+        wpa\_group\_rekey=86400
+
+        ieee80211n=1
+
+        wme\_enabled=1
+
+    \item Alterar no arquivo \textit{/etc/default/hostapd} a linha #DAEMON\_CONF 
+
+por DAEMON\_CONF="/etc/hostapd/hostapd.conf"
+
+    \item No arquivo \textit{/etc/sysctl.conf} descomentar a linha: net.ipv4.ip\_forward=1.
+
+    \item Executar no terminal:
+        \begin{itemize}
+            \item \$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip\_forward"
+   
+            \item \$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+   
+            \item \$ sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+            \item \$ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT 
+
+            \item \$ sudo sh -c "iptables-save > /etc/iptables/rules.v4"
+
+            \item \$ sudo service hostapd start
+
+            \item \$ sudo service isc-dhcp-server start
+
+            \item \$ sudo update-rc.d hostapd enable
+
+            \item \$ sudo update-rc.d isc-dhcp-server enable
+
+        \end{itemize}
+\end{enumerate}
