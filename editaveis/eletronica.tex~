@@ -88,9 +88,18 @@ Especificações Raspberry Pi 3:
 \item Dimensões: 85 x 56 x 17mm
 \end{itemize}
 
-No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um access point para que os sensores wireless pudessem se conectar ao broker. As configurações setadas estão 
-
+No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um access point para que os sensores wireless pudessem se conectar ao broker. Além do mais, ele permite a utilização do cabo de rede para conexão com o computador que irá gerar os gráficos do jogo. As configurações setadas estão no Raspberry estão explicadas passo a passo no apêndice XXX.
 \subsection{Conversor Analógico-Digital ADC0809}
+
+	Para fazer a conversão analógico-digital dos dados de frenagem e posição angular do guidão foi usado o conversor analógico-digital ADC0809, devido ao Raspberry Pi 3 não possuir conversores analógico-digitais. O ADC0809 é um conversor de 8 bits de resolução e frequência de amostragem de 10 kHz. O conversor conta com 8 canais de entrada independentes e saída paralela de 8 bits. 
+
+	O conversor conta com seis entradas de controle. Três entradas de seleção do endereço de entrada (\textit{ADD A – Address A, ADD B – Address B e ADD C – Address C}), uma entrada para atualizar o endereço do canal setado nas seletoras (\textit{ALE – Address Latch Enable}), uma entrada para habilitar a saída (\textit{OE – Output Enable}) e uma entrada para dar início a conversão (\textit{START}).
+
+	O conversor também tem um sinal de interrupção (EOC – \textit{End of Conversion}) que indica quando a conversão iniciou e termino. O sinal quando não há conversão fica em nível alto, quando uma conversão é iniciada o sinal vai para nível baixo e quando a conversão é finalizada o sinal volta para nível alto, indicando o fim de conversão.
+
+	Há ainda os sinais de referência do sinal de entrada que servem para condicionar o sinal de entrada para máximo aproveitamento de resolução e o sinal de \textit{clock} de clock com uma frequência de 500 kHz. Este sinal de \textit{clock} foi gerado com o LM555 em modo ástavel. 
+
+	Para fazer uma conversão primeiro deve se definir o canal através de seu endereço usando entradas de controle seletoras, depois atualizar o endereço com a entrada de controle \textit{ALE} e setar o sinal de \textit{START}. Após isso basta esperar a interrupção \textit{EOC} acusar fim de conversão e habilitar a saída com \textit{OE} para entregar o resultado da conversão a GPIO do Raspberry Pi 3.
 
 
 
@@ -133,12 +142,10 @@ No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um a
 \subsection{Circuitos de Aquisição de Dados da Fisiológicos}
 
 \subsubsection{Atividade Eletrodermal via GSR}
-No estudo dos sinais fisiológicos na Engenharia Biomédica o sinal de Atividade Eletrodermal é um dos mais importantes, isto devido ao fato de que a sua resposta é baseada nas características elétricas da pele. Sabe-se a mais de 100 anos %(referência: Vigouroux, R. (1888). The electrical resistance considered as a clinical sign. Progres Medicale, 3, 87-89.) 
-que a resposta galvânica da pele é um efeito proveniente das regiões periféricas e que, muitas das vezes, pode ser utilizado como uma medida para níveis de estresse em diversas situações %(referência: https://www.researchgate.net/profile/Rebecca_Elliott2/publication/12565836_Neural_activity_relating_to_generation_and_representation_of_galvanic_skin_conductance_responses_A_functional_magnetic_resonance_imaging_study/links/00b4952dd499abb525000000.pdf). 
-	Para mensurar o nível de estresse no ambiente virtual, um dos objetivos propostos pelo trabalho, utilizou-se então de um circuito GSR (Galvanic Skin Response) desenvolvido na dissertação de %(Miranda, 2014) (referência: DESENVOLVIMENTO DE BANCADA PARA SIMULAÇÃO VEICULAR INTEGRANDO REALIDADE VIRTUAL E MEDIÇÃO DE DADOS FISIOLÓGICOS,  MATEUS RODRIGUES MIRANDA) 
-almejando disponibilizar para o usuário informações sobre o nível de estresse, os quais podem ser comparados a posteriori com atividades fora da realidade virtual.
-	O circuito utilizado possui dois seguidores de tensão, que têm como objetivo diminuir o consumo de energia, pois o circuito é alimentado por bateria e tende-se a facilitar a manutenção para usuário final. Ainda usufrui-se de dois filtros passa-baixas, com frequências de corte teóricas de 60Hz e 120Hz (harmônicos advindos da rede de energia elétrica). Utilizou-se então dois filtros com seguidores de tensão, os quais podem ser observados no esquemático %XXX 
-, realizando algumas alterações nos valores dos componentes para ser possível a utilização de componentes comerciais.
+No estudo dos sinais fisiológicos na Engenharia Biomédica o sinal de Atividade Eletrodermal é um dos mais importantes, isto devido ao fato de que a sua resposta é baseada nas características elétricas da pele. Sabe-se a mais de 100 anos \cite{eletrodermal_1} que a resposta galvânica da pele é um efeito proveniente das regiões periféricas e que, muitas das vezes, pode ser utilizado como uma medida para níveis de estresse em diversas situações \cite{eletrodermal_2}. 
+	Para mensurar o nível de estresse no ambiente virtual, um dos objetivos propostos pelo trabalho, utilizou-se então de um circuito GSR (Galvanic Skin Response) desenvolvido na dissertação de \cite{mateusr.2014}, almejando disponibilizar para o usuário informações sobre o nível de estresse, os quais podem ser comparados a posteriori com atividades fora da realidade virtual.
+
+	O circuito utilizado possui dois seguidores de tensão, que têm como objetivo diminuir o consumo de energia, pois o circuito é alimentado por bateria e tende-se a facilitar a manutenção para usuário final. Ainda usufrui-se de dois filtros passa-baixas, com frequências de corte teóricas de 60Hz e 120Hz (harmônicos advindos da rede de energia elétrica). Utilizou-se então dois filtros com seguidores de tensão, os quais podem ser observados no esquemático presente no anexo 1, realizando algumas alterações nos valores dos componentes para ser possível a utilização de componentes comerciais.
 	Os resultados obtidos em simulação, podem ser observados na Fig.\ref{gsr_sim}.
     
     \begin{center}
@@ -152,14 +159,14 @@ almejando disponibilizar para o usuário informações sobre o nível de estress
 
 \subsubsection{Frequência Cardíaca}
 
-Outro sinal muito importante no diagnóstico de doenças cardiovasculares e do esforço exercitado nas atividades físicas é o sinal de frequência cardíaca. Ele ajuda os profissionais da saúde a entenderem melhor os efeitos de doenças como: miocardiopatia, hipertensão arterial, epilepsia, entre outros. %(referência: http://www.scielo.br/scielo.php?pid=S0102-76382009000200018&script=sci_arttext&tlng=pt) . 
-	O usuário da plataforma Vride terá disponível este sinal para avaliação do seu rendimento e comportamento na atividade física desenvolvida dentro do ambiente. Estes dados podem ser usufruidos para análise de profissionais da educação física ou da medicina para detectar o parâmetros importantes na elaboração de treinamentos ou tratamentos destas doenças. 
+Outro sinal muito importante no diagnóstico de doenças cardiovasculares e do esforço exercitado nas atividades físicas é o sinal de frequência cardíaca. Ele ajuda os profissionais da saúde a entenderem melhor os efeitos de doenças como: miocardiopatia, hipertensão arterial, epilepsia, entre outros. \cite{VANDERLEI2009} . 
 	
-    Na literatura disponível, possuem diversas topologias para adquirir este sinal de frequência cardíaca, contudo, a ideia é ter um método não invasivo com a maior precisão possível. Então, após um refinamento dos artigos pesquisados, foi definido que a técnica de fotopletismografica atendia aos nossos critérios de custo e precisão, e foi encontrado um artigo em que era tal plataforma era desenvolvida por %(referência: Photoplethysmography (PPG) system, Geert Langereis)
-    , mas algumas características de filtragem foram extraídas por foram retiradas de %(referência: Non-Invasive Measurement of Heart Rate and Hemoglobin Concentration Level Through Fingertip) (referência: DESIGN AND ANALYSIS OF ARTIFACT-RESISTIVE FINGER PHOTOPLETHYSMOGRAPHIC SENSORS FOR VITAL SIGNMONITORING) . 
+O usuário da plataforma Vride terá disponível este sinal para avaliação do seu rendimento e comportamento na atividade física desenvolvida dentro do ambiente. Estes dados podem ser usufruidos para análise de profissionais da educação física ou da medicina para detectar o parâmetros importantes na elaboração de treinamentos ou tratamentos destas doenças. 
 	
-    O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, composto de um LED (diodo emissor de luz) e um fototransistor. Segundo a topologia escolhida, devem-se haver dois estágios de filtragem. Portanto, seguindo o design apresentado na Fig. %XXX
-    , foram feitos circuitos para amplificação de 65 dB, tendo em vista que o sinal possui uma amplitude muito baixa, filtrado na faixa de 1Hz a 5Hz. Pôde-se observar então nas simulações:
+Na literatura disponível, possuem diversas topologias para adquirir este sinal de frequência cardíaca, contudo, a ideia é ter um método não invasivo com a maior precisão possível. Então, após um refinamento dos artigos pesquisados, foi definido que a técnica de fotopletismografica atendia aos nossos critérios de custo e precisão, e foi encontrado um artigo em que era tal plataforma era desenvolvida por %\cite{geertlangereis2010}, 
+mas algumas características de filtragem foram extraídas por foram retiradas de \cite{abhishek2015} e \cite{rheesokwoo2000} . 
+	
+O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, composto de um LED (diodo emissor de luz) e um fototransistor. Segundo a topologia escolhida, devem-se haver dois estágios de filtragem. Portanto, seguindo o design apresentado no anexo 1, foram feitos circuitos para amplificação de 65 dB, tendo em vista que o sinal possui uma amplitude muito baixa, filtrado na faixa de 1Hz a 5Hz. Pôde-se observar então nas simulações:
     
     \begin{center}
     	\includegraphics[scale=0.3]{figuras/Simulacao_Cardio}
