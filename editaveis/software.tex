@@ -1,17 +1,34 @@
 \section{Fluxograma do jogo}
+
 \section{Funcionalidades}
 \subsection{Menu}
+O menu é o módulo pelo qual o usuário irá escolher suas opções de jogo, sendo elas: a criação de conta ou a utilização de uma já existente, escolha dos modos de jogo, seleção de número de voltas na pista, escolha da pista, cenário noturno ou diurno, visualização de gráficos. Esta sequência de escolhas no menu possibilitará ao jogador diferentes versões de ambientes de realidade virtual.
+
 \subsection{Modo Corrida}
 \label{corrida}
+
+Para cada cenário disponível no jogo é possível escolher dentre dois modos: um deles é o modo corrida e outro é o modo livre. A principal diferença presente é a restrição do número de voltas no circuito no modo corrida. Contudo, outras particularidades são encontradas nesse modo, como a contabilização do tempo, a restrição do sentido da bicicleta para computação das voltas e delimitação do cenário do circuito, para auxiliar o cumprimento das voltas.
+
+Depois de escolher o pista que deseja, o usuário escolhe a quantidade de voltas que vai correr e então começa a corrida. O modo corrida termina assim que as voltas acabam, e então é mostrado o seu desempenho.
+
 \subsection{Modo Livre}
 \label{livre}
+Diferentemente da funcionalidade anterior, o modo livre tem o propósito de deixar o usuário experimentar o ambiente virtual criado. Nenhuma das particularidades citadas anteriormente está presente nele. Para iniciá-lo é necessário apenas escolher a pista que deseja explorar. A partir de então é iniciado o modo livre. Ele só acaba quando é pausado o jogo. Sendo que tal interação se dá quando o usuário tira alguma de suas mãos do guidão da bicicleta física. Neste momento é mostrado então a opção de se encerrar o modo livre.
+
 \subsection{Controle da Bicicleta}
+Essa funcionalidade descreve a comunicação do sistema eletrônico, que devolve dados de velocidade da bicicleta e rotação do guidão. Com esses dados, o jogo deve ser capaz de controlar a bicicleta no cenário, alterando a velocidade do objeto, movimentando o sistema personagem-bicicleta-câmeras e rotacionando a direção do jogador, além de rotacionar o guidão para fidelidade visual.
+
 \subsection{Física do Jogo}
+A física do jogo é a parte responsável pela detecção e tratamento das colisões entre os objetos físicos dele. Nesse jogo, é necessário definir um poliedro de colisão para a bicicleta, de forma que fique realista a um nível em que o jogador tenha a sensação de estar em uma bicicleta real. Além de poliedros de colisão para a grama, as pistas, a cerca e a linha de chegada. Essas colisões são tratadas pela \textit{Unity} e podem ser capturadas por código para mudar estados e ativar sons, como batida em cerca e caminhada na grama.
+
 \subsection{Conta}
+A fim de conseguir customizar a experiência de cada usuário, o jogo consta com a funcionalidade de criação de uma conta. Assim que é ele entra no jogo é possível selecionar uma conta já existente ou criar uma nova. Para criar a conta é necessário informar o nome, peso, altura e sexo. A partir de então, com a conta criada é possível acessar as outras funcionalidades, bem como acessar algumas estatísticas próprias do jogo. Por final, é possível na tela de criar uma conta deletar uma já existente.
+
 \subsection{Gráficos}
+Além dos dados já informados pelo próprio usuário ao criar a sua conta, a plataforma possui sensores que irão coletar e medir dados como velocidade da bicicleta, batimentos cardíacos, resistência galvânica da pele, frequência respiratória, entre outros. Durante o jogo serão exibidos alguns destes dados coletados e ao final serão exibidos de forma mais detalhada. Estes dados de cada corrida serão armazenados na conta do usuário e possibilitarão a ele a visualização de gráficos que servirão para demonstrar o seu desempenho na plataforma.
 
 \subsection{Personagens}
-A visão do jogador consiste na orientação da câmera que representa o \textit{Oculus}. Dentro do jogo é a visão do personagem, no qual está posicionado em cima da bicicleta, para proporcionar a sensação de imersão. É possível visualizar a movimentação do personagem como o pedalar de acordo com a velocidade, os braços acompanhando a direção do guidão, entre outras. Existem dois tipos de personagens no jogo que podem ser selecionados pelo jogador: um homem e uma mulher, demonstrados na Figura \ref{figura:mulher} e Figura HOMEM. 
+A visão do jogador consiste na orientação da câmera que representa o \textit{Oculus}. Dentro do jogo é a visão do personagem, no qual está posicionado em cima da bicicleta, para proporcionar a sensação de imersão. É possível visualizar a movimentação do personagem como o pedalar de acordo com a velocidade, os braços acompanhando a direção do guidão, entre outras. Existem dois tipos de personagens no jogo que podem ser selecionados pelo jogador: um homem e uma mulher, demonstrados na Figura \ref{figura:mulher} e Figura HOMEM.
 
 \begin{center}
 	\includegraphics[scale=0.4]{figuras/mulher}
@@ -47,7 +64,7 @@ As imagens abaixo contém os elementos principais que compõem o cenário do jog
 	\includegraphics[scale=0.4]{figuras/pista}
 	\captionof{figure}{Vista superior da pista regular.}
 	\label{figura:pista}
-\end{center} 
+\end{center}
 
 \begin{center}
 	\includegraphics[scale=0.4]{figuras/jardim}
@@ -70,9 +87,33 @@ As imagens abaixo contém os elementos principais que compõem o cenário do jog
 
 \section{Arquitetura}
 
-\subsection{Modelo de domínio}
+\subsection{Modelo de Domínio}
 
-\subsection{Arquitetura de componentes}
+\subsection{Arquitetura de Componentes}
+A \textit{Unity 3D} possui uma arquitetura baseada em componentes. Tal decisão arquitetural é baseada no princípio de que os objetos de um jogo - como personagem, árvore, chão - são formados por diversos componentes diferentes - como imagem, som, colidível e outros. Dessa forma, ao invés de cada tipo de objeto do jogo possuir novas funcionalidades por meio de herança, novos componentes são adicionados a eles de forma dinâmica. Na \textit{Unity}, em específico, cada objeto herda da classe \textit{GameObject} que possui métodos de adicionar e remover componentes. Todos os componentes herdam da classe \textit{Component} e alguns dos mais usados incluem:
+
+\begin{itemize}
+\item \textit{Collider}: Adiciona uma área de colisão ao objeto, que pode reagir a colisões físicas ou de gatilho em métodos como \textit{OnCollisionEnter} e \textit{OnTriggerEnter};
+\item \textit{AudioSource:} Adiciona som ao objeto, que pode tocar, automaticamente, em \textit{loop} e ser 3D (ter uma fonte espacial no jogo) ou não.
+\item \textit{Transform}: Guarda as informações acerca da posição e da rotação de um objeto.
+\item \textit{Script}: Adiciona instruções ao objeto. Podem ser escritos em C\# ou \textit{Javascript}, com instruções executadas ao iniciar (\textit{Start}), a cada \textit{frame} (\textit{Update}) ou em determinados eventos (\textit{OnCollisionExit} e outras).
+\end{itemize}
+
+Em relação à construção do jogo, os menus e fases são agrupados em cenas (\textit{scenes}). Cada cena possui uma hierarquia com diversos \textit{game objects}. Cada \textit{game object} possui um pai e um ou mais filhos. A cada \textit{frame}, todos os \textit{game objects} são atualizados e todos os métodos de \textit{update} dos \textit{scripts} executados.
+
+\subsubsection{\textit{Scripts}}
+
+Os \textit{scripts} são a parte em que os desenvolvedores alteram o comportamento do jogo programaticamente. Cada \textit{script} altera o comportamento de um \textit{game object} diretamente e pode alterar o de outros de forma indireta. Cada \textit{game object} pode ter um ou mais scripts.
+
+Os principais scripts do jogo são:
+
+\begin{itemize}
+\item \textit{PlayerScript}: Responsável pelo controle do jogador, utilizando os valores de velocidade e rotação para movimentar a bicicleta, o personagem e a câmera.
+\item \textit{HandleBarScript}: Responsável pela rotação do guidão da bicicleta de acordo com a rotação recebida da classe InputOutput.
+\item \textit{Scripts} de áudio: Responsáveis pela reprodução de áudio de colisão com cercas e chão, reproduzindo sons característicos em tal contato.
+\item \textit{CheeringScript}: Responsável pelo início da animação dos personagens de torcida para que eles não tenham a animação sincronizada, mas em tempos randômicos em relação um ao outro.
+\item \textit{Scripts} do menu: Responsáveis pela transição dos paíneis dentro do menu, pelo controle das ações e comportamento dos botões e por salvar e carregar as informações da conta.
+\end{itemize}
 
 \subsection{Fluxo de Informa\c{c}ões}
 \subsubsection{MQTT}
@@ -80,21 +121,21 @@ As imagens abaixo contém os elementos principais que compõem o cenário do jog
 O MQTT é um protocolo baseado em mensagens utilizado em soluções IOT. Como ilustrada na Figura \ref{figura:mqttsoft}, o MQTT possui três papéis principais para o estabelecimento das trocas de mensagens: o \textit{Broker}, o \textit{Publisher} e o \textit{Subscriber}: O \textit{Broker} é um servidor responsável por intermediar o recebimento e envio das mensagens e é onde é implementado toda a lógica responsável pelo armazenamento de dados. O \textit{Publisher} é o dispositivo que mandará mensagens em tópicos para o Broker de modo que fique acessível para o \textit{Subscriber} ler a mensagens.
 
 A identificação das mensagens é definida por tópicos que podem ser identificadas por palavras divididas por barras, como por exemplo: \textit{\textbf{bike/velocity}}. Para que o \textit{Publisher} publique uma mensagem, o tópico deve ser definido. E para que o \textit{Subscriber} leia a mensagem, ele se inscrever no tópico desejado. Os dados contidos nas mensagens trocadas pelo MQTT estão em \textit{bytecode}.
-    
+
 \begin{center}
 	\includegraphics[scale=0.4]{figuras/MQTT}
 	\captionof{figure}{Fluxo de mensagens do MQTT.}
 	\label{figura:mqttsoft}
-\end{center} 
+\end{center}
 
-    
+
 Neste projeto, o jogo agirá como um \textit{Publisher} e como um \textit{Subscriber}. Por exemplo, para definir a velocidade da bicicleta e a angulação do guidão, agirá como um \textit{Subscriber} e para definir a angulação vertical, agirá como um \textit{Publisher}. As funções de publicação, inscrição, conexão, entre outras é importada do asset do MQTT disponível para Unity.  A classe que faz as intermediações entre os dados no jogo é a \textit{InputOutput} que será detalhada no tópico a seguir.
 
 \subsubsection{\textit{InputOutPut} e \textit{Mock} do \textit{Input}}
 
-Na função \textit{Start} da classe  \textit{InputOutput}, é realizada a conexão do jogo com o \textit{Broker} através do IP e porta e a inscrição de todos os tópicos que serão utilizados. Os tópicos presentes atualmente são: o \textit{bike/velocity} para a velocidade da bicicleta e o \textit{bike/angle} para a angulação do guidão. 
+Na função \textit{Start} da classe  \textit{InputOutput}, é realizada a conexão do jogo com o \textit{Broker} através do IP e porta e a inscrição de todos os tópicos que serão utilizados. Os tópicos presentes atualmente são: o \textit{bike/velocity} para a velocidade da bicicleta e o \textit{bike/angle} para a angulação do guidão.
 
-Como a integração com o sistema físico ainda não foi realizada, é implementado um \textit{Publisher} para enviar mensagens a partir de eventos do teclado. Portanto, para testes do subsistema isolado, o fluxo de informações é o seguinte: 
+Como a integração com o sistema físico ainda não foi realizada, é implementado um \textit{Publisher} para enviar mensagens a partir de eventos do teclado. Portanto, para testes do subsistema isolado, o fluxo de informações é o seguinte:
 
 \begin{itemize}
 \item Quando a seta ${\uparrow}$ é pressionada, é enviado uma mensagem através de um Publish que a tecla está sendo pressionada no tópico \textit{bike/velocity} . No \textit{script} responsável pelo controle do movimento da bicicleta, são repassadas as mensagens contidas no tópico de velocidade que aumenta gradativamente enquanto esta tecla estiver pressionada.
@@ -106,11 +147,11 @@ Como a integração com o sistema físico ainda não foi realizada, é implement
 	\includegraphics[scale=0.4]{figuras/inputoutp}
 	\captionof{figure}{Integração através do MQTT}
 	\label{figura:inputoutput}
-\end{center} 
+\end{center}
 
 \subsection{Banco de Dados}
 Para o armazenamento das informações relativas a conta de um usuário foi adotado a utilização de um banco de dados. Tais informações incluem sendo tanto os dados pessoais como, nome, altura e peso, quanto os dados relativos ao desenvolver do usuário, como o tempo das voltas, batimentos cardíacos durante a corrida, frequência respiratória e velocidade no circuito, entre outros, que poderão vir a ser adicionados para melhorar a funcionalidade de estatísticas.
 
-O banco de dados escolhido foi o \hyperref[iBoxBD]{'http://www.iboxdb.com/''}, uma banco de bados totalmente não relacional, que é leve e usa pouca memória. Ele é executado como um servidor incorporado como banco de dados local, também suporta conexão de conexão TCP como parte do sistema distribuído. Outras vantagens são: único arquivo, ausência da necessidade de configuração e suporte ao C\#. 
-	
-Na implementação dele no projeto foi criado um Singleton, que instância e gerencia a “Box”, que é parte desse BD que cuida do contexto das operações e as executa. Além disso foi criada uma DAO para o Player, que separa as regras de negócio do jogo do acesso aos dados, que se dá pelo Singleton. O Player, por sua vez, possui todas as informações que se refere a ele e que vai adquirindo, já citadas anteriormente.
+O banco de dados escolhido foi o \textit{iBoxBD} (\url{http://www.iboxdb.com/}), uma banco de bados totalmente não relacional, que é leve e usa pouca memória. Ele é executado como um servidor incorporado como banco de dados local, também suporta conexão TCP como parte do sistema distribuído. Outras vantagens são: único arquivo, ausência da necessidade de configuração e suporte ao C\#.
+
+Na implementação dele no projeto foi criado um \textit{Singleton}, que instância e gerencia a \textit{“Box”}, que é parte desse BD que cuida do contexto das operações e as executa. Além disso foi criada uma DAO para o \textit{Player}, que separa as regras de negócio do jogo do acesso aos dados, que se dá pelo \textit{Singleton}. O \textit{Player}, por sua vez, possui todas as informações que se refere a ele e que vai adquirindo, já citadas anteriormente.
