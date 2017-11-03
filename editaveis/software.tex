@@ -66,12 +66,18 @@ Além dos dados já informados pelo próprio usuário ao criar a sua conta, a pl
 \end{center}
 
 \subsection{Personagens}
-A visão do jogador consiste na orientação da câmera que representa o \textit{Oculus}. Dentro do jogo é a visão do personagem, no qual está posicionado em cima da bicicleta, para proporcionar a sensação de imersão. É possível visualizar a movimentação do personagem como o pedalar de acordo com a velocidade, os braços acompanhando a direção do guidão, entre outras. Existem dois tipos de personagens no jogo que podem ser selecionados pelo jogador: um homem e uma mulher, demonstrados na Figura \ref{figura:mulher} e Figura HOMEM.
+A visão do jogador consiste na orientação da câmera que representa o \textit{Oculus}. Dentro do jogo é a visão do personagem, no qual está posicionado em cima da bicicleta, para proporcionar a sensação de imersão. É possível visualizar a movimentação do personagem como o pedalar de acordo com a velocidade, os braços acompanhando a direção do guidão, entre outras. Existem dois tipos de personagens no jogo que podem ser selecionados pelo jogador: um homem e uma mulher, demonstrados nas (Figuras \ref{figura:mulher} e \ref{figura:homem}) .
 
 \begin{center}
 	\includegraphics[scale=0.4]{figuras/mulher}
 	\captionof{figure}{Personagem feminina vista de perfil.}
 	\label{figura:mulher}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.4]{figuras/homem}
+	\captionof{figure}{Personagem feminina vista de perfil.}
+	\label{figura:homem}
 \end{center}
 
 \subsection{Cenários}
@@ -127,7 +133,22 @@ As imagens abaixo contém os elementos principais que compõem o cenário do jog
 
 \subsection{Modelo de Domínio}
 
+O modelo de domínio representado nas (Figuras \ref{figura:menu_domain} e \ref{figura:main_domain}) faz referência aos dois módulos principais do desenvolvimento do jogo. O menu sendo representado por todos os componentes que interagem com o usuário para que ele escolha o modo de jogo e pelos componentes que armazenam informações do usuário. E o \textit{Simple Track Run} que engloba os componentes utilizados na construção do percurso que o usuário irá fazer ao jogar, como os cenários, personagens, torcida.
+
+\begin{center}
+	\includegraphics[scale=0.5]{figuras/menu_domain}
+	\captionof{figure}{Modelo de Domínio - Menu.}
+	\label{figura:menu_domain}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.5]{figuras/main_domain}
+	\captionof{figure}{Modelo de Domínio - \textit{Simple Track Run}.}
+	\label{figura:main_domain}
+\end{center}
+
 \subsection{Arquitetura de Componentes}
+
 A \textit{Unity 3D} possui uma arquitetura baseada em componentes. Tal decisão arquitetural é baseada no princípio de que os objetos de um jogo - como personagem, árvore, chão - são formados por diversos componentes diferentes - como imagem, som, colidível e outros. Dessa forma, ao invés de cada tipo de objeto do jogo possuir novas funcionalidades por meio de herança, novos componentes são adicionados a eles de forma dinâmica. Na \textit{Unity}, em específico, cada objeto herda da classe \textit{GameObject} que possui métodos de adicionar e remover componentes. Todos os componentes herdam da classe \textit{Component} e alguns dos mais usados incluem:
 
 \begin{itemize}
