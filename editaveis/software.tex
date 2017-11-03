@@ -1,5 +1,13 @@
 \section{Fluxograma do jogo}
 
+A Figura \ref{figura:fluxograma} detalha o fluxo do jogo com as ações possivelmente executadas pelos jogadores. 
+
+\begin{center}
+	\includegraphics[scale=0.4]{figuras/fluxograma}
+	\captionof{figure}{Fluxograma do Jogo.}
+	\label{figura:fluxograma}
+\end{center}
+
 \section{Funcionalidades}
 \subsection{Menu}
 O menu é o módulo pelo qual o usuário irá escolher suas opções de jogo, sendo elas: a criação de conta ou a utilização de uma já existente, escolha dos modos de jogo, seleção de número de voltas na pista, escolha da pista, cenário noturno ou diurno, visualização de gráficos. Esta sequência de escolhas no menu possibilitará ao jogador diferentes versões de ambientes de realidade virtual.
@@ -9,7 +17,13 @@ O menu é o módulo pelo qual o usuário irá escolher suas opções de jogo, se
 
 Para cada cenário disponível no jogo é possível escolher dentre dois modos: um deles é o modo corrida e outro é o modo livre. A principal diferença presente é a restrição do número de voltas no circuito no modo corrida. Contudo, outras particularidades são encontradas nesse modo, como a contabilização do tempo, a restrição do sentido da bicicleta para computação das voltas e delimitação do cenário do circuito, para auxiliar o cumprimento das voltas.
 
-Depois de escolher o pista que deseja, o usuário escolhe a quantidade de voltas que vai correr e então começa a corrida. O modo corrida termina assim que as voltas acabam, e então é mostrado o seu desempenho.
+Depois de escolher o pista que deseja, o usuário escolhe a quantidade de voltas que vai correr e então começa a corrida. O início e o fim do modo corrida são demarcados pela linha de chegada (Figura \ref{figura:linhadechegada}). O modo corrida termina assim que as voltas acabam, e então é mostrado o seu desempenho.
+
+\begin{center}
+	\includegraphics[scale=0.4]{figuras/linhadechegada}
+	\captionof{figure}{Linha de Chegada.}
+	\label{figura:linhadechegada}
+\end{center}
 
 \subsection{Modo Livre}
 \label{livre}
@@ -25,7 +39,13 @@ A física do jogo é a parte responsável pela detecção e tratamento das colis
 A fim de conseguir customizar a experiência de cada usuário, o jogo consta com a funcionalidade de criação de uma conta. Assim que é ele entra no jogo é possível selecionar uma conta já existente ou criar uma nova. Para criar a conta é necessário informar o nome, peso, altura e sexo. A partir de então, com a conta criada é possível acessar as outras funcionalidades, bem como acessar algumas estatísticas próprias do jogo. Por final, é possível na tela de criar uma conta deletar uma já existente.
 
 \subsection{Gráficos}
-Além dos dados já informados pelo próprio usuário ao criar a sua conta, a plataforma possui sensores que irão coletar e medir dados como velocidade da bicicleta, batimentos cardíacos, resistência galvânica da pele, frequência respiratória, entre outros. Durante o jogo serão exibidos alguns destes dados coletados e ao final serão exibidos de forma mais detalhada. Estes dados de cada corrida serão armazenados na conta do usuário e possibilitarão a ele a visualização de gráficos que servirão para demonstrar o seu desempenho na plataforma.
+Além dos dados já informados pelo próprio usuário ao criar a sua conta, a plataforma possui sensores que irão coletar e medir dados como velocidade da bicicleta, batimentos cardíacos, resistência galvânica da pele, frequência respiratória, entre outros. Durante o jogo serão exibidos alguns destes dados coletados como ilustrado na Figura \ref{figura:canvas} e ao final serão exibidos de forma mais detalhada. Estes dados de cada corrida serão armazenados na conta do usuário e possibilitarão a ele a visualização de gráficos que servirão para demonstrar o seu desempenho na plataforma.
+
+\begin{center}
+	\includegraphics[scale=0.4]{figuras/canvas}
+	\captionof{figure}{Informações do Modo Corrida.}
+	\label{figura:canvas}
+\end{center}
 
 \subsection{Personagens}
 A visão do jogador consiste na orientação da câmera que representa o \textit{Oculus}. Dentro do jogo é a visão do personagem, no qual está posicionado em cima da bicicleta, para proporcionar a sensação de imersão. É possível visualizar a movimentação do personagem como o pedalar de acordo com a velocidade, os braços acompanhando a direção do guidão, entre outras. Existem dois tipos de personagens no jogo que podem ser selecionados pelo jogador: um homem e uma mulher, demonstrados na Figura \ref{figura:mulher} e Figura HOMEM.
@@ -100,6 +120,12 @@ A \textit{Unity 3D} possui uma arquitetura baseada em componentes. Tal decisão 
 \end{itemize}
 
 Em relação à construção do jogo, os menus e fases são agrupados em cenas (\textit{scenes}). Cada cena possui uma hierarquia com diversos \textit{game objects}. Cada \textit{game object} possui um pai e um ou mais filhos. A cada \textit{frame}, todos os \textit{game objects} são atualizados e todos os métodos de \textit{update} dos \textit{scripts} executados.
+
+\begin{center}
+	\includegraphics[scale=0.4]{figuras/arquiteturacomponentes}
+	\captionof{figure}{Arquitetura de Componentes. Fonte: \cite{arquitetura}}
+	\label{figura:arquiteturacomponentes}
+\end{center}
 
 \subsubsection{\textit{Scripts}}
 
