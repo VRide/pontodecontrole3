@@ -171,11 +171,21 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
 
     Com a exigência de se fazer elevação durante a simulação, foi projetado a utilização de um macaco que se esticaria ao total 230 mm. Isso daria em torno de 6 graus de subida e 6 de descida. Como o motor que precisávamos para gerar a subida e descida da plataforma pesava bem mais que o macaco e sua fixação estava bem complexa, por sugestão do professor Rhander, escolheu-se comprar um macaco elétrico \ref{macaco_eletrico}, pois é uma solução confiável, dentro do orçamento disponível.
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/macaco_eletrico_1}
+        \captionof{figure}{Macaco com motor elétrico}
+        \label{macaco_eletrico_1}
+    \end{center}    
     %Figura 12: Macaco com motor elétrico
 
 \section{Parte Traseira}
     A parte traseira da plataforma garante a interação com a realidade aumentada através de sensores de velocidade, controle de peso na pedalada para simular subida e geração de energia com um alternador. É adaptável a diferentes tamanhos de bicicleta.
-
+ 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/parte_traseira}
+        \captionof{figure}{CAD da parte traseira}
+        \label{parte_traseira_1}
+    \end{center}    
     %Figura X: CAD da parte traseira
 
     O esqueleto, estrutura em cinza, foi adquirido de um projeto antigo no galpão que usava para fins semelhantes. Adaptado a ele, foram projetados o suporte do freio e do alternador. Após estar operacional, serão reajustados algumas peças de tal esqueleto que estão velhas ou em condições não ideais.
@@ -189,17 +199,42 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
         \item Duas peças que juntas se tornam um cavalete.
     \end{itemize}
     
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/esquema_traseira_1}
+        \captionof{figure}{Esquema estrutura parte traseira}
+        \label{esquema_traseira_1}
+    \end{center}    
     %Figura 1: Esquema estrutura parte traseira
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/parte_traseira_2}
+        \captionof{figure}{Esquema estrutura completa de acoplamento parte traseira.}
+        \label{parte_traseira_2}
+    \end{center}        
     %Figura 2: Esquema estrutura completa de acoplamento parte traseira.
-  
+   
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/acoplamento_est_1}
+        \captionof{figure}{Acoplamento estrutura em uma bicicleta.}
+        \label{acoplamento_est_1}
+    \end{center}      
     %Figura 3: Acoplamento estrutura em uma bicicleta.
   
     Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura XXX: Análise corpos livres”.  Nesse caso as análises foram feitas com uma força de 2200 N para aumentar o fator de segurança, levando em conta uma situação extrema de uso da estrutura. Fazendo a decomposição dos vetores, essas forças foram distribuídas nos eixos X e Z (de acordo com o sistema de referência do ANSYS).
- 
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/forcas_1}
+        \captionof{figure}{Aplicação das forças}
+        \label{forcas_1}
+    \end{center}   
     %Figura 4: Aplicação das forças
- 
-­
+     
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/forcas_2}
+        \captionof{figure}{Aplicação das forças em escala aumentada}
+        \label{forcas_2}
+    \end{center}  
     %Figura 5: Aplicação das forças em escala aumentada
  
     Com as forças definidas foram feitas as simulações no cavalete pois ele é o componente estrutural e que sustenta a maior carga, sendo ela a junção do peso da bicicleta e do jogador e suas energias consequentes.
@@ -210,16 +245,46 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
         \item Simulações na peça com rolo do cavalete – Peça 2.
     \end{itemize}
  
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/sim_estatica_3}
+        \captionof{figure}{Simulação estática peça 1 – Tensão elástica equivalente}
+        \label{sim_estatica_3}
+    \end{center}
     % Figura 6: Simulação estática peça 1 – Tensão elástica equivalente
- 
-    %Figura 7: Stress equivalente com Tensão de escoamento da peça 1.
-
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/stress_3}
+        \captionof{figure}{Stress equivalente com Tensão de escoamento da peça 1}
+        \label{stress_3}
+    \end{center}
+    %Figura 7: Stress equivalente peça 1 com Tensão de escoamento
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/deformacao_1}
+        \captionof{figure}{Total deformação da peça 1}
+        \label{deformacao_1}
+    \end{center}
     %Figura 8: Total deformação da peça 1
- 
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/fator_seguranca_3}
+        \captionof{figure}{Fator de Segurança da peça 1}
+        \label{fator_seguranca_3}
+    \end{center}
     %Figura 9: Fator de segurança da peça 1
-  
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vida_util_3}
+        \captionof{figure}{Vida útil da peça 1}
+        \label{vida_util_3}
+    \end{center}
     %Figura 10: Vida útil da peça 1
- 
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vibracao_1}
+        \captionof{figure}{Modos de vibração de ressonância da peça 1}
+        \label{vibracao_1}
+    \end{center}    
     %Figura 11: Modos de vibração de ressonância da peça 1
  
     Como pode ser observado, todos os testes validam a peça para fabricação:
@@ -236,18 +301,49 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
  
     Para a peça 2 foram feitas tais simulações:
  
-    %Figura 12: Simulação estática estrutural da peça 2 – Tensão elástica equivalente
- 
-    %Figura 13: Stress equivalente com Tensão de escoamento da peça 2
- 
-    %Figura 14: Modal de corpo livre - Deformação total para a peça 2.
- 
-    %Figura 15: Fator de segurança da peça 2
- 
-    %Figura 16: Vida útil da peça 2
- 
-    %Figura 17: Módulos de vibração de ressonância da peça 2.
- 
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/sim_estatica_4}
+        \captionof{figure}{Simulação estática peça 2 – Tensão elástica equivalente}
+        \label{sim_estatica_4}
+    \end{center}
+    % Figura 6: Simulação estática peça 2 – Tensão elástica equivalente
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/stress_4}
+        \captionof{figure}{Stress equivalente com Tensão de escoamento da peça 2}
+        \label{stress_4}
+    \end{center}
+    %Figura 7: Stress equivalente peça 2 com Tensão de escoamento
+  
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/deformacao_2}
+        \captionof{figure}{Modal de corpo livre - deformação total da peça 2}
+        \label{deformacao_2}
+    \end{center}
+    %Figura 8: Total deformação da peça 2    
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/fator_seguranca_4}
+        \captionof{figure}{Fator de Segurança da peça 2}
+        \label{fator_seguranca_4}
+    \end{center}
+    %Figura 9: Fator de segurança da peça 2
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vida_util_4}
+        \captionof{figure}{Vida útil da peça 2}
+        \label{vida_util_4}
+    \end{center}
+    %Figura 10: Vida útil da peça 2
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vibracao_2}
+        \captionof{figure}{Modos de vibração de ressonância da peça 2}
+        \label{vibracao_2}
+    \end{center}    
+    %Figura 11: Modos de vibração de ressonância da peça 1
+
     Como pode ser observado, todos os testes também validam a peça para fabricação:
  
     \begin{itemize}
@@ -260,6 +356,45 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
     \end{itemize}
 
 A peça 2 também está válida para o uso.
+
+\subsection{Suporte do Rolo}
+
+Suporte do rolo (Figura 1 e figura 2), fica acoplado na estrutura traseira e suporta o rolo.
+ 
+
+%Figura 1: Esquema estrutura parte traseira com suporte do rolo
+ 
+%Figura 2: Esquema estrutura completa de acoplamento parte traseira.
+ 
+Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura 2: Análise corpos livres”.  Foi utilizado a força total aplicada na estrutura traseira nos dois suportes do rolo e dividida simultaneamente para a superfície de contado do rolamento em vermelho na Figura 3.
+
+%Figura 3: Aplicação das forças no suporte.
+  
+Com as forças definidas foram feitas as simulações no suporte.
+
+%Figura 4: Simulação estática do suporte – Tensão elástica equivalente
+ 
+%Figura 5: Stress equivalente com Tensão de escoamento do suporte.
+
+%Figura 6: Total deformação do suporte.
+ 
+%Figura 7: Fator de segurança do suporte.
+
+%Figura 8: Vida útil do suporte.
+
+%Figura 9: Modos de vibração de ressonância do suporte.
+ 
+Como pode ser observado, todos os testes validam a peça para o uso:
+\begin{itemize}
+    \item A figura 4 mostra a deformação elástica (em mm) que o suporte sofre com a carga aplicada, esta deformação é considerada nula;
+    \item A figura 5 mostra a tensão de escoamento que o material do suporte alcança (42,844 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+    \item A figura 6 mostra a deformação total do suporte, considerada mínima.
+    \item A figura 7 mostra o Fator de segurança do suporte pelas condições de contorno, sendo esse fator igual a 15;
+    \item A figura 8 mostra a vida útil do suporte tendo como resultado uma peça com vida útil muito grande.
+    \item A figura 9 mostra os módulos de vibração do suporte, vemos que o primeiro modo de vibração de 211,78 Hz é inalcançável devido as aplicações da estrutura.
+\end{itemize}
+
+O Suporte de rolo é valido com segurança para os esforços nela aplicado.
 
 \subsection{Freio controlado} 
     Esse componente tem como objetivo dificultar a pedalada em simulação de subida e liberar na descida e plano para aumentar a imersão da realidade aumentada.
