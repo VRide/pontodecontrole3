@@ -34,8 +34,17 @@
 \chapter{Software}
 \input{editaveis/software}
 
-\chapter{Anexos}
+\part{Anexos}
+\chapter{Esquemáticos}
 \input{anexos/descricao}
+
+
+\chapter{Layout}
+\chapter{Códigos}
+\chapter{Configuração de Rede}
+\chapter{Desenhos Técnicos}
+
+
 
 %\part{Resultados}
 
