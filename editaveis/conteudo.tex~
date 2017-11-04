@@ -34,5 +34,8 @@
 \chapter{Software}
 \input{editaveis/software}
 
+\chapter{Anexos}
+\input{anexos/descricao}
+
 %\part{Resultados}
 
