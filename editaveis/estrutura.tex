@@ -361,27 +361,66 @@ A peça 2 também está válida para o uso.
 
 Suporte do rolo (Figura 1 e figura 2), fica acoplado na estrutura traseira e suporta o rolo.
  
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/esq_suporte_rolo_1}
+        \captionof{figure}{Esquema estrutura parte traseira com suporte do rolo}
+        \label{esq_suporte_rolo_1}
+    \end{center} 
 
 %Figura 1: Esquema estrutura parte traseira com suporte do rolo
  
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/esq_suporte_rolo_2}
+        \captionof{figure}{Esquema estrutura completa de acoplamento parte traseira.}
+        \label{esq_suporte_rolo_2}
+    \end{center} 
 %Figura 2: Esquema estrutura completa de acoplamento parte traseira.
  
 Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura 2: Análise corpos livres”.  Foi utilizado a força total aplicada na estrutura traseira nos dois suportes do rolo e dividida simultaneamente para a superfície de contado do rolamento em vermelho na Figura 3.
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/forcas_3}
+        \captionof{figure}{Aplicação das forças no suporte.}
+        \label{forcas_3}
+    \end{center} 
 %Figura 3: Aplicação das forças no suporte.
   
 Com as forças definidas foram feitas as simulações no suporte.
-
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/sim_estatica_5}
+        \captionof{figure}{Simulação estática do suporte – Tensão elástica equivalente}
+        \label{sim_estatica_5}
+    \end{center} 
 %Figura 4: Simulação estática do suporte – Tensão elástica equivalente
- 
+     \begin{center}
+    	\includegraphics[scale=0.7]{figuras/stress_5}
+        \captionof{figure}{Stress equivalente com Tensão de escoamento do suporte.}
+        \label{stress_5}
+    \end{center} 
 %Figura 5: Stress equivalente com Tensão de escoamento do suporte.
-
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/deformacao_3}
+        \captionof{figure}{Total deformação do suporte.}
+        \label{deformacao_3}
+    \end{center} 
 %Figura 6: Total deformação do suporte.
- 
+     \begin{center}
+    	\includegraphics[scale=0.7]{figuras/fator_seguranca_5}
+        \captionof{figure}{Fator de segurança do suporte.}
+        \label{fator_seguranca_5}
+    \end{center} 
 %Figura 7: Fator de segurança do suporte.
-
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vida_util_5}
+        \captionof{figure}{Vida útil do suporte.}
+        \label{vida_util_5}
+    \end{center} 
 %Figura 8: Vida útil do suporte.
-
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vibracao_3}
+        \captionof{figure}{Modos de vibração de ressonância do suporte.}
+        \label{vibracao_3}
+    \end{center} 
 %Figura 9: Modos de vibração de ressonância do suporte.
  
 Como pode ser observado, todos os testes validam a peça para o uso:
@@ -405,25 +444,41 @@ O Suporte de rolo é valido com segurança para os esforços nela aplicado.
 
     A segunda solução que tivemos foi fazer um sistema com disco de freio de moto, porém com teste, verificou-se que era sensível demais e que causaria uma carga muito alta rapidamente, portanto excluiu-se tal solução.
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/freio_moto}
+        \captionof{figure}{Freio a disco de moto.}
+        \label{freio_moto}
+    \end{center} 
     %Figura X: Freio a disco de moto
 
     A terceira solução foi utilizar um espécie de pêndulo com uma mola que seria puxado para encostar na parte não utilizada da coroa para causar certo atrito e aumentar a carga assim. Essa solução acabou sendo substituída devido a incerteza e insegurança quanto a funcionalidade e projetação dessa alternativa.
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/freio_pendulo}
+        \captionof{figure}{Freio com pêndulo}
+        \label{freio_pendulo}
+    \end{center} 
     %Figura X: Freio com pêndulo
 
     A quarta solução foi utilizar um freio a disco de bicicleta preso no eixo do rolo. Essa solução se demonstrou ser a mais profissional, por já ser bem usada no mercado, de fácil acesso e projetação mais direta. Foram feitas várias alternativas para essa solução, mas a final está representada abaixo.
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/carga_peso}
+        \captionof{figure}{Sistema de carga de peso na simulação. Em amarelo, o disco de freio, em rosa, a pinça para frear, em laranja a estrutura de fixação da pinça e em azul o suporte do rolo.}
+        \label{carga_peso}
+    \end{center} 
     %Figura X: Sistema de carga de peso na simulação. Em amarelo, o disco de freio, em rosa, a pinça para frear, em laranja a estrutura de fixação da pinça e em azul o suporte do rolo.
 
     Esta alternativa foi encontrada depois de utilização de vários iterações de simulações estruturais e CADs. Algumas coisas percebidas foram o tamanho adequado do tubo azul a ser soldado e a adição de mais um parafuso em cima da estrutura da pinça para garantir maior contato.  As simulações ainda alertaram para as regiões de maior estresse e maior deslocamento.
 
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/sim_est_freio}
+        \captionof{figure}{Simulação estrutural do sistema do freio.}
+        \label{sim_est_freio}
+    \end{center} 
     %Figura X: Simulação estrutural do sistema do freio.
 
     Na figura acima vê-se a tensão máxima como sendo de 800 MPA no parafuso, mas isso se deve uma descontinuidade no parafuso. As maiores tensões se encontram na parte inferior voltada para o rolo e nas regiões dos parafusos. Para resolver a primeira região será acrescentado cantoneiras e para a segunda, acrescentar-se-á buchas para aumentar a superfície de contato com o parafuso.
 
 \subsection{Alternador}
-    Como apresentado no relatório do sistema de alimentação, o alternador não funcionou como esperado e projetado, consumindo energia ao invés de gerar. Devido a esse fato, fizemos uma primeira versão, porém demos enfase nas demais partes, por serem mais importantes para o projeto como um todo.
-
-    %Figura 12: CAD do alternador com a correia acoplada na coroa
-    
-    Tendo definido as questões da geração de energia, volta-se a projetar este sistema.
+    Como apresentado no relatório do sistema de alimentação, o alternador não funcionou como esperado e projetado, consumindo energia ao invés de gerar. Devido a esse fato, fizemos uma primeira versão, porém demos enfase nas demais partes, por serem mais importantes para o projeto como um todo. Tendo definido as questões da geração de energia, volta-se a projetar este sistema.
