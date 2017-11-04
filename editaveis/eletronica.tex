@@ -112,7 +112,7 @@ Outra configuração setada no Raspberry foi a configuração do mesmo como brok
 
 \subsection{Circuitos de Aquisição de Dados da Bicicleta}
 
-O esquema da figura \ref{sensores} mostra a topologia do sistema de aquisição de dados da bicicleta.  Como ilustrado, o Raspberry  concentra os dados, faz alguns processamentos(Linha x do Anexo X), envia os dados para o PC,  e também deve utilizá-los como parâmetro de entrada para sistema de controle.  
+O esquema da figura \ref{sensores} mostra a topologia do sistema de aquisição de dados da bicicleta.  Como ilustrado, o Raspberry  concentra os dados, faz alguns processamentos(Anexo 3), envia os dados para o PC,  e também deve utilizá-los como parâmetro de entrada para sistema de controle.  
             \begin{center}
    	\includegraphics[scale=0.80]{figuras/sensores.png}
         \captionof{figure}{Arquitetura do Sistema de Aquisição de dados da Bicicleta}
@@ -152,7 +152,7 @@ O esquema da figura \ref{sensores} mostra a topologia do sistema de aquisição 
  
  \subsubsection{Sensor de Posição Angular do Guidão}        
 
-A posição angular foi obtida acoplando na mesa giratória da roda dianteira um potenciômetro. Para se alcançar uma boa sensação de imersão do usuário foi necessário  criar entradas  que apresentassem  vários níveis de intensidade, de modo a simular uma grandeza analógica. Foi utilizado o conversor  analógico digital ADC0809 para fazer a conversão da posição angular do guidão em volts(saída do potenciômetro) para uma representação binária em 8 bits. O anexo X(Linhas x a y) mostra o algoritmo que implementa a conversão para graus, sendo que quando a roda está alinhada com a bicicleta é a posição angular $0\,^{\circ}$, a esquerda posição angular negativa(até $-135\,^{\circ}$), e a direita posição angular positiva(até $135\,^{\circ}$).
+A posição angular foi obtida acoplando na mesa giratória da roda dianteira um potenciômetro. Para se alcançar uma boa sensação de imersão do usuário foi necessário  criar entradas  que apresentassem  vários níveis de intensidade, de modo a simular uma grandeza analógica. Foi utilizado o conversor  analógico digital ADC0809 para fazer a conversão da posição angular do guidão em volts(saída do potenciômetro) para uma representação binária em 8 bits. O anexo 3 mostra o algoritmo que implementa a conversão para graus, sendo que quando a roda está alinhada com a bicicleta é a posição angular $0\,^{\circ}$, a esquerda posição angular negativa(até $-135\,^{\circ}$), e a direita posição angular positiva(até $135\,^{\circ}$).
 
 Com essa implementação foi alcançado a seguinte resolução:
 
@@ -171,7 +171,7 @@ $n$ =  Número de bits do conversor ADC0809.\\
 
 \subsubsection{Aquisição da Intensidade de Frenagem} 
 
-A intensidade de frenagem foi obtida capturando a força que a borracha de freio aplica no aro da bicicleta. Foi utilizado um sensor FSR(Figura X) com o circuito de instrumentação mostrado abaixo.
+A intensidade de frenagem foi obtida capturando a força que a borracha de freio aplica no aro da bicicleta. Foi utilizado um sensor FSR(Figura \ref{fsr}) com o circuito de instrumentação mostrado abaixo.
 
             \begin{center}
    	\includegraphics[scale=0.80]{figuras/FSR_2.png}
