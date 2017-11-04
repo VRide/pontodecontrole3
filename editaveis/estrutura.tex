@@ -1,0 +1,260 @@
+\section{Parte frontal} 
+
+A parte frontal da estrutura comporta a roda dianteira da bicicleta e é responsável pela elevação e descida da plataforma dando a sensação de um terreno com variação de altura para que o usuário tenha uma experiência mais imersiva ao ambiente virtual.
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/partedafrente.png}
+        \captionof{figure}{CAD da estrutura dianteira}
+        \label{partedafrente}
+    \end{center}
+
+    Como anteriormente definido a esta parte fronta comporta:
+    \begin{itemize}
+        \item Macaco de elevação - acionado eletricamente por um motor com redução para suportar o peso do usuário e da estrutura complementar.
+        \item Mesa giratória – Usinada para ser acoplada ao macaco e suportar os esforços de peso, composta por 3 peças
+            \begin{itemize}
+                \item Base inferior – Acoplada a base do macaco e onde ocorre o acoplamento ‘fêmea’ do rolamento e furo para abrigar potenciômetro;
+                \item Rolamento;
+                \item Base superior – Acoplada como "macho" no rolamento e sustentando a roda dando segurança e permitindo o giro do guidão controlando jogo
+            \end{itemize}
+    \end{itemize}    
+
+
+
+\subsection{Mesa Giratória}
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/acoplamento_frontal}
+        \captionof{figure}{Esquema de acoplamento da parte frontal}
+        \label{acoplamento_frontal}
+    \end{center}
+    
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/acoplamento_frontal_2}
+        \captionof{figure}{Outra vista do esquema de acoplamento}
+        \label{acoplamento_frontal_2}
+    \end{center}
+
+
+    Tendo em vista o planejamento final de "assembly" da montagem final, começou-se o dimensionamento das peças a serem fabricadas.
+
+    Para calcular os esforços para as simulações foram feitos os cálculos abaixo
+
+    \begin{center}
+    	\includegraphics[scale=0.7]{figuras/analise_corpos_livres}
+        \captionof{figure}{Outra vista do esquema de acoplamento}
+        \label{analise_corpos_livres}
+    \end{center}
+
+
+    Como não há um padrão para distância entre os eixos e no centro de massa, medimos as distâncias da bicicleta que usamos nos desenhos em CAD. Com elas, utilizou-se conhecimentos básicos em estática para calcular a força resultante em cada roda. 
+
+    Utilizando como momento nulo o centro da roda traseira e considerando que toda a plataforma mais o usuário gerem uma força de 1000 N, temos que:
+
+        %∑F = 0 
+        %F2*1110,295 - 1000*479,176 = 0
+        %F2 =~ 431,6 N
+        %F1 =~ 568,4 N
+
+    Como a bicicleta varia sua inclinação em um ângulo muito pequeno, podemos aproximar para essa força em todo o percurso.
+
+    Com as forças definidas foram feitas as simulações nas duas peças a serem usinadas no software ANSYS para avaliação dos resultados, validação e posterior usinagem.
+
+    Para a parte superior da mesa foram feitas tais simulações:
+
+     \begin{center}
+    	\includegraphics[scale=0.7]{figuras/sim_estatica_1}
+        \captionof{figure}{Simulação estática estrutural – Tensão elástica equivalente}
+        \label{sim_estatica_1}
+    \end{center}
+
+    %Figura 3: Simulação estática estrutural – Tensão elástica equivalente
+    
+     \begin{center}
+    	\includegraphics[scale=0.7]{figuras/stress_1}
+        \captionof{figure}{Outra vista do esquema de acoplamento}
+        \label{stress_1}
+    \end{center}
+   
+    %Figura 4: Stress equivalente com Tensão de escoamento
+
+     \begin{center}
+    	\includegraphics[scale=0.7]{figuras/fator_seguranca_1}
+        \captionof{figure}{Fator de segurança}
+        \label{fator_seguranca_1}
+    \end{center}
+    
+    %Figura 5: Fator de segurança
+
+     \begin{center}
+    	\includegraphics[scale=0.7]{figuras/vida_util_1}
+        \captionof{figure}{Outra vista do esquema de acoplamento}
+        \label{vida_util_1}
+    \end{center}
+
+    %Figura 6: Vida útil
+
+    Como pode ser observado, todos os testes validam a peça para fabricação:
+
+    \begin{itemize}
+        \item A figura 3 mostra a deformação máxima (em mm) que a peça sofre com a carga aplicada e esta deformação é quase nula;
+        \item A figura 4 mostra a tensão de escoamento que o material alcança (3,1662 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+        \item A figura 5 mostra o Fator de segurança da peça pelas condições de contorno, sendo esse fator igual a 15;
+        \item A figura 6 mostra a vida útil da peça tendo como resultado uma peça com vida útil muito grande.
+    \end{itemize}
+  
+    Conclui-se que essas peças são validadas para usinagem pois suportam com segurança os esforços nela aplicado. É possível observar que é uma peça superdimensionada, mas como um dos objetivos do projeto é a segurança do usuário e o macaco suporta o peso este fato é descartado.
+
+    Para a parte inferior da mesa foram feitas tais simulações:
+
+    %Figura 7: Modal de corpo livre - Deformação total 
+
+
+    %Figura 8: Módulos de vibração de ressonância da peça
+
+    %Figura 9: Simulação estática estrutural – Tensão elástica equivalente
+
+    %Figura 10: Stress equivalente com Tensão de escoamento
+
+    %Figura 11: Fator de segurança
+
+    %Figura 12: Vida útil
+
+    Como pode ser observado, todos os testes também validam a peça para fabricação:
+    \begin{itemize}
+        \item A figura 7 e 8 mostram os resultados da análise modal de corpo livre mostrando a deformação total que as frequências causariam, que novamente são quase nulas, e as valores os quais a peça entra em ressonância, não tendo impacto pois a frequência gerada pelo macaco não conflita com nenhum dos valores atingidos
+        \item A figura 9 mostra a deformação máxima (em mm) que a peça sofre com a carga aplicada e esta deformação é quase nula;
+        \item A figura 10 mostra a tensão de escoamento que o material alcança (1,4389 MPa), sendo também muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+        \item A figura 11 mostra o Fator de segurança da peça pelas condições de contorno, sendo esse fator também igual a 15;
+        \item A figura 12 mostra a vida útil da peça tendo como resultado uma peça com vida útil muito grande.
+    \end{itemize}
+
+    %Figura 12: Mesa giratória usinada
+
+    Esta peça também foi validada para usinagem pois suportam todos os esforços exigidos e nenhum fator oferece risco algum ao usuário. Esta peça também é superdimensionada mas, como explicado na outra peça, isso não oferece nenhuma perda ao projeto e o resultado final
+
+\subsection{Macaco de Elevação}
+
+    Com a exigência de se fazer elevação durante a simulação, foi projetado a utilização de um macaco que se esticaria ao total 230 mm. Isso daria em torno de 6 graus de subida e 6 de descida. Como o motor que precisávamos para gerar a subida e descida da plataforma pesava bem mais que o macaco e sua fixação estava bem complexa, por sugestão do professor Rhander, escolheu-se comprar um macaco elétrico \ref{macaco_eletrico}, pois é uma solução confiável, dentro do orçamento disponível.
+
+    %Figura 12: Macaco com motor elétrico
+
+\section{Parte Traseira}
+    A parte traseira da plataforma garante a interação com a realidade aumentada através de sensores de velocidade, controle de peso na pedalada para simular subida e geração de energia com um alternador. É adaptável a diferentes tamanhos de bicicleta.
+
+    %Figura X: CAD da parte traseira
+
+    O esqueleto, estrutura em cinza, foi adquirido de um projeto antigo no galpão que usava para fins semelhantes. Adaptado a ele, foram projetados o suporte do freio e do alternador. Após estar operacional, serão reajustados algumas peças de tal esqueleto que estão velhas ou em condições não ideais.
+
+\subsection{Cavalete de sustentação}
+
+    A estrutura traseira comporta a roda traseira da bicicleta, acoplando-as por fusos com um acoplador nas pontas que encaixa na bicicleta exatamente no eixo da roda. Essa estrutura tem como objetivo sustentar a bicicleta e comportar o rolete traseiro onde haverá o sistema de freio e gerador de energia.
+
+    Como anteriormente definido a esta parte traseira comporta:
+    \begin{itemize}
+        \item Duas peças que juntas se tornam um cavalete.
+    \end{itemize}
+    
+    %Figura 1: Esquema estrutura parte traseira
+
+    %Figura 2: Esquema estrutura completa de acoplamento parte traseira.
+  
+    %Figura 3: Acoplamento estrutura em uma bicicleta.
+  
+    Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura XXX: Análise corpos livres”.  Nesse caso as análises foram feitas com uma força de 2200 N para aumentar o fator de segurança, levando em conta uma situação extrema de uso da estrutura. Fazendo a decomposição dos vetores, essas forças foram distribuídas nos eixos X e Z (de acordo com o sistema de referência do ANSYS).
+ 
+    %Figura 4: Aplicação das forças
+ 
+­
+    %Figura 5: Aplicação das forças em escala aumentada
+ 
+    Com as forças definidas foram feitas as simulações no cavalete pois ele é o componente estrutural e que sustenta a maior carga, sendo ela a junção do peso da bicicleta e do jogador e suas energias consequentes.
+ 
+    Para a parte traseira foram divididas em 2 partes:
+    \begin{itemize}
+        \item Simulações na peça sem rolo do cavalete – Peça 1.
+        \item Simulações na peça com rolo do cavalete – Peça 2.
+    \end{itemize}
+ 
+    % Figura 6: Simulação estática peça 1 – Tensão elástica equivalente
+ 
+    %Figura 7: Stress equivalente com Tensão de escoamento da peça 1.
+
+    %Figura 8: Total deformação da peça 1
+ 
+    %Figura 9: Fator de segurança da peça 1
+  
+    %Figura 10: Vida útil da peça 1
+ 
+    %Figura 11: Modos de vibração de ressonância da peça 1
+ 
+    Como pode ser observado, todos os testes validam a peça para fabricação:
+    \begin{itemize}
+        \item A figura 6 mostra a deformação elástica (em mm) que a peça 1 sofre com a carga aplicada, esta deformação é considerada nula;
+        \item A figura 7 mostra a tensão de escoamento que o material da peça 1 alcança (75,91 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+        \item A figura 8 mostra a deformação total da peça 1, considerada nula.
+        \item A figura 9 mostra o Fator de segurança da peça 1 pelas condições de contorno, sendo esse fator igual a 15;
+        \item A figura 10 mostra a vida útil da peça 1 tendo como resultado uma peça com vida útil muito grande.
+        \item A figura 11 mostra os módulos de vibração da peça 1, vemos que os 6 primeiros modos de vibração são considerados nulos, para que a faça com que a estrutura entre em ressonância é necessário chegar ao sétimo modo de vibração de 229,46 Hz, sendo que para a aplicação desta estrutura tal frequência jamais será alcançada.
+    \end{itemize}
+    
+    A peças 1 suporta com segurança os esforços nela aplicado.
+ 
+    Para a peça 2 foram feitas tais simulações:
+ 
+    %Figura 12: Simulação estática estrutural da peça 2 – Tensão elástica equivalente
+ 
+    %Figura 13: Stress equivalente com Tensão de escoamento da peça 2
+ 
+    %Figura 14: Modal de corpo livre - Deformação total para a peça 2.
+ 
+    %Figura 15: Fator de segurança da peça 2
+ 
+    %Figura 16: Vida útil da peça 2
+ 
+    %Figura 17: Módulos de vibração de ressonância da peça 2.
+ 
+    Como pode ser observado, todos os testes também validam a peça para fabricação:
+ 
+    \begin{itemize}
+        \item A figura 12 mostra a deformação elástica (em mm) que a peça 2 sofre com a carga aplicada, esta deformação é considerada nula;
+        \item A figura 13 mostra a tensão de escoamento que a peça 2 alcança (141,39 MPa), sendo também muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+        \item A figura 14 mostra a deformação total da peça 2, considerada mínima.
+        \item A figura 15 mostra o Fator de segurança da peça 2 pelas condições de contorno, sendo esse fator também igual a 15;
+        \item A figura 16 mostra a vida útil da peça 2 tendo como resultado uma peça com vida útil muito grande.
+        \item Assim como a peça 1 a peça 2 possui os 6 primeiros modos e para chegar na frequência natural da peça seria necessário alcançar 2264 Hz, inalcançável considerando a sua aplicação
+    \end{itemize}
+
+A peça 2 também está válida para o uso.
+
+\subsection{Freio controlado} 
+    Esse componente tem como objetivo dificultar a pedalada em simulação de subida e liberar na descida e plano para aumentar a imersão da realidade aumentada.
+
+    A primeira versão dessa solução foi fazer o controle por meio do alternador que seria também utilizado para gerar energia. Ela seria conectada na coroa ao lado do rolo por uma correia.
+
+    Esta solução não deu certo pelas complicações causadas pelo alternador. Seria difícil gerar energia e ao mesmo tempo dificultar e liberar a pedalada. Os testes feitos mostraram complicações em nível mais fundamental com esse equipamento, o que fez descartar essa solução (mais informações verificar a sessão que trate desse tema).
+
+    A segunda solução que tivemos foi fazer um sistema com disco de freio de moto, porém com teste, verificou-se que era sensível demais e que causaria uma carga muito alta rapidamente, portanto excluiu-se tal solução.
+
+    %Figura X: Freio a disco de moto
+
+    A terceira solução foi utilizar um espécie de pêndulo com uma mola que seria puxado para encostar na parte não utilizada da coroa para causar certo atrito e aumentar a carga assim. Essa solução acabou sendo substituída devido a incerteza e insegurança quanto a funcionalidade e projetação dessa alternativa.
+
+    %Figura X: Freio com pêndulo
+
+    A quarta solução foi utilizar um freio a disco de bicicleta preso no eixo do rolo. Essa solução se demonstrou ser a mais profissional, por já ser bem usada no mercado, de fácil acesso e projetação mais direta. Foram feitas várias alternativas para essa solução, mas a final está representada abaixo.
+
+    %Figura X: Sistema de carga de peso na simulação. Em amarelo, o disco de freio, em rosa, a pinça para frear, em laranja a estrutura de fixação da pinça e em azul o suporte do rolo.
+
+    Esta alternativa foi encontrada depois de utilização de vários iterações de simulações estruturais e CADs. Algumas coisas percebidas foram o tamanho adequado do tubo azul a ser soldado e a adição de mais um parafuso em cima da estrutura da pinça para garantir maior contato.  As simulações ainda alertaram para as regiões de maior estresse e maior deslocamento.
+
+    %Figura X: Simulação estrutural do sistema do freio.
+
+    Na figura acima vê-se a tensão máxima como sendo de 800 MPA no parafuso, mas isso se deve uma descontinuidade no parafuso. As maiores tensões se encontram na parte inferior voltada para o rolo e nas regiões dos parafusos. Para resolver a primeira região será acrescentado cantoneiras e para a segunda, acrescentar-se-á buchas para aumentar a superfície de contato com o parafuso.
+
+\subsection{Alternador}
+    Como apresentado no relatório do sistema de alimentação, o alternador não funcionou como esperado e projetado, consumindo energia ao invés de gerar. Devido a esse fato, fizemos uma primeira versão, porém demos enfase nas demais partes, por serem mais importantes para o projeto como um todo.
+
+    %Figura 12: CAD do alternador com a correia acoplada na coroa
+    
+    Tendo definido as questões da geração de energia, volta-se a projetar este sistema.
