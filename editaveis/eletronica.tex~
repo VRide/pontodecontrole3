@@ -1,3 +1,13 @@
+	O diagrama geral das partes desenvolvidas pela área de eletrônica consta na Fig.\ref{fluxo_el}. As partes de sensoriamento e comunicação são descritas abaixo, a parte de controle não pode ser desenvolvida ainda devido a alterações pertinentes a outras áreas. 
+
+    \begin{center}
+    	\includegraphics[scale=0.4]
+        {figuras/Diagrama_de_blocos_projeto.png}
+        \captionof{figure}{Fluxograma do projeto eletrônico.}
+        \label{fluxo_el}
+    \end{center}
+    
+
 \section{Protocolo de Comunicação}
 \subsection{Message Queue Telemetry Transport}
 	Consiste em um protocolo de mensagens leves, criado para comunicação M2M (Machine to Machine). Por exigir muito pouco processamento e banda ou consumo de internet, este é um dos protocolos ideais para dispositivos embarcados. Por esta razão, o MQTT é famoso no conceito IoT (Internet of Things).
@@ -109,7 +119,16 @@ Outra configuração setada no Raspberry foi a configuração do mesmo como brok
 
 \section{Circuitos de Aquisição de Dados}
 
+
 \subsection{Circuitos de Aquisição de Dados da Bicicleta}
+
+O esquema da figura \ref{sensores} mostra a topologia do sistema de aquisição de dados da bicicleta.  Como ilustrado, o Raspberry  concentra os dados, faz alguns processamentos(Anexo 3), envia os dados para o PC,  e também deve utilizá-los como parâmetro de entrada para sistema de controle.  
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/sensores.png}
+        \captionof{figure}{Arquitetura do Sistema de Aquisição de dados da Bicicleta}
+        \label{sensores}
+   \end{center}
+
 
 \subsubsection{Sensor de RPM e velocidade}    
 
@@ -141,7 +160,50 @@ Outra configuração setada no Raspberry foi a configuração do mesmo como brok
     
     	A saída do sensor é conectada na Raspbery Pi 3. Na Raspberry  Pi 3 foi implementado um código em python que conta as bordas de descida na porta de GPIO a qual a saída está conectada. Esta borda de descida indica que o sensor detectou uma rotação. A lógica implementada no código consiste em contar quantas rotações ocorrerão em um segundo e então multiplicar esse número por 60 para se ter um valor de RPM. Toda vez que há uma borda de descida uma interrupção é chamada e um contador é incrementado, a cada segundo é feito o cálculo em cima do valor do contador e este é zerado em seguida para se iniciar uma nova contagem.
  
-    
+ \subsubsection{Sensor de Posição Angular do Guidão}        
+
+A posição angular foi obtida acoplando na mesa giratória da roda dianteira um potenciômetro. Para se alcançar uma boa sensação de imersão do usuário foi necessário  criar entradas  que apresentassem  vários níveis de intensidade, de modo a simular uma grandeza analógica. Foi utilizado o conversor  analógico digital ADC0809 para fazer a conversão da posição angular do guidão em volts(saída do potenciômetro) para uma representação binária em 8 bits. O anexo 3 mostra o algoritmo que implementa a conversão para graus, sendo que quando a roda está alinhada com a bicicleta é a posição angular $0\,^{\circ}$, a esquerda posição angular negativa(até $-135\,^{\circ}$), e a direita posição angular positiva(até $135\,^{\circ}$).
+
+Com essa implementação foi alcançado a seguinte resolução:
+
+\begin{equation}
+Resolução =  \frac{270\,^{\circ}}{2^n} = 1.05\,^{\circ}/bit
+\label{apon}
+\end{equation}
+
+Onde: 
+\begin{quote}
+$270\,^{\circ}$ = Inclinaçao máxima em graus do potenciômetro.\\
+$n$ =  Número de bits do conversor ADC0809.\\
+\end{quote}
+
+
+
+\subsubsection{Aquisição da Intensidade de Frenagem} 
+
+A intensidade de frenagem foi obtida capturando a força que a borracha de freio aplica no aro da bicicleta. Foi utilizado um sensor FSR(Figura \ref{fsr}) com o circuito de instrumentação mostrado abaixo.
+
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/FSR_2.png}
+        \captionof{figure}{Sensor FSR.}
+        \label{fsr}
+   \end{center}
+
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/FSR.png}
+        \captionof{figure}{Circuito de condicionamento do FSR.}
+        \label{con_fsr}
+   \end{center}
+
+O gráfico abaixo mostra a resposta força/tensão do circuito acima para diferentes resistências R1.  A fim de reduzir a sensibilidade do mecanismo, adicionamos espumas em série com o FSR, com isso uma parcela da força aplicada pela borracha do freio é transmitida para o FSR.
+
+
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/grafico_fsr.png}
+        \captionof{figure}{Divisor de Tensão FSR}
+        \label{graf_fsr}
+   \end{center}
+   
 
 \subsection{Circuitos de Aquisição de Dados da Fisiológicos}
 
@@ -181,11 +243,11 @@ O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, co
     
 \subsubsection{Estimação de Frequência Respiratória com Uso de FSR}
 
-	Um dos dados fisiológicos que presta informação útil acerca do estresse causado pela atividade de ciclismo é a frequência respiratória. Esta grandeza varia proporcionalmente a frequência cardíaca, uma vez que com o aumento da frequência cardíaca mais sangue é enviado aos pulmões e logo há uma maior demanda de taxa trocas de gasosas [1].  Monitorar esse dado ajuda a perceber se o usuário está respirando de maneira correta para o melhor desempenho.
+	Um dos dados fisiológicos que presta informação útil acerca do estresse causado pela atividade de ciclismo é a frequência respiratória. Esta grandeza varia proporcionalmente a frequência cardíaca, uma vez que com o aumento da frequência cardíaca mais sangue é enviado aos pulmões e logo há uma maior demanda de taxa trocas de gasosas \cite{rosero}.  Monitorar esse dado ajuda a perceber se o usuário está respirando de maneira correta para o melhor desempenho.
     
-	Para se mensurar a frequência respiratória efetivamente deve se aferir as trocas gasosas em cada respiração, esta demanda exige que um aparato seja conectado ao redor das vias nasais para fazer a medida [2]. Para o escopo do trabalho esta medida não pode ser implementada visto que o usuário já estará usando um óculos de realidade virtual consideravelmente grande e este aparato traria um incomodo para o usuário, o que provavelmente o faria não usar a solução ou interferir na análise de estresse causada.
+	Para se mensurar a frequência respiratória efetivamente deve se aferir as trocas gasosas em cada respiração, esta demanda exige que um aparato seja conectado ao redor das vias nasais para fazer a medida \cite{miranda2015}. Para o escopo do trabalho esta medida não pode ser implementada visto que o usuário já estará usando um óculos de realidade virtual consideravelmente grande e este aparato traria um incomodo para o usuário, o que provavelmente o faria não usar a solução ou interferir na análise de estresse causada.
     
-	Uma solução para suprir essa demanda é ao invés de aferir as trocas gasosas aferir a expansão da caixa torácica a cada respiração do usuário. Quando o usuário respira a variação de gás no pulmão faz com este se contraia e expanda, ao se ler o nível dessa expansão é possível ter uma boa estimativa da frequência respiratória do atleta [2].
+	Uma solução para suprir essa demanda é ao invés de aferir as trocas gasosas aferir a expansão da caixa torácica a cada respiração do usuário. Quando o usuário respira a variação de gás no pulmão faz com este se contraia e expanda, ao se ler o nível dessa expansão é possível ter uma boa estimativa da frequência respiratória do atleta \cite{miranda2015}.
     
 	Para e verificar a expansão da caixa torácica foi usado um FSR (Force-Sensing Resistor) este dispositivo é um material que tem sua resistência elétrica variada de forma inversamente proporcional a tensão mecânica aplicada em sua superfície. Logo, basta colocar um FSR com sua superfície em contato com o tórax do atleta.
     
@@ -195,7 +257,7 @@ O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, co
         \label{fsr_curve}
     \end{center}
 
-	O FSR usado foi o de modelo quadrado de lado medindo 4,38 cm da Interlink Electronics. Sua resistência varia de um valor de mais de 1MOhm, quando está sem carga, para algumas unidades de Ohm, quando está saturado de carga [3].
+	O FSR usado foi o de modelo quadrado de lado medindo 4,38 cm da Interlink Electronics. Sua resistência varia de um valor de mais de 1MOhm, quando está sem carga, para algumas unidades de Ohm, quando está saturado de carga \cite{fsr_guide}.
     
     \begin{center}
     	\includegraphics[scale=0.4]{figuras/fsr_model.jpg}
@@ -207,7 +269,7 @@ O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, co
     
 	O circuito montado para o estimador de respiração usado está no Anexo I, a saída da ponte de Wheatstone é conectada um amplificador diferencial DC de alta impedância de entrada, a topologia do amplificador diferencial usa dois estágios de amplificadores LM324 e foi baseada em um esquemático que consta no próprio datasheet do mesmo. O LM324 foi escolhido devido a não precisar de alimentação simétrica, podendo ser alimentado apenas com 5 V. 
     
-	Após o estágio diferenciador o sinal é passado através de um filtro RC Passa-Baixas de 1ª ordem, com frequência de corte de 34 Hz. Um adulto possuí uma frequência de movimentos respiratórios por minuto entre 12 e 48 movimentos [4], logo uma frequência baixa ade 34 Hz é suficiente para preservar o sinal de variação lenta. Após o estágio de filtragem o sinal é passando por um \textit{buffer} e um divisor de tensão para condicionar o sinal de saída para próximo de 1 V, valor de entrada do conversor analógico-digital do módulo transmissor ESP2866.
+	Após o estágio diferenciador o sinal é passado através de um filtro RC Passa-Baixas de 1ª ordem, com frequência de corte de 34 Hz. Um adulto possuí uma frequência de movimentos respiratórios por minuto entre 12 e 48 movimentos \cite{siate}, logo uma frequência baixa ade 34 Hz é suficiente para preservar o sinal de variação lenta. Após o estágio de filtragem o sinal é passando por um \textit{buffer} e um divisor de tensão para condicionar o sinal de saída para próximo de 1 V, valor de entrada do conversor analógico-digital do módulo transmissor ESP2866.
     
     O circuito do estimador de respiração foi simulado no software ADS 2009, da Agilent. A figura de sua simulação consta na Fig.\ref{fsr_ads}.  
     
