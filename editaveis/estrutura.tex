@@ -11,7 +11,7 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
     Como anteriormente definido a esta parte fronta comporta:
     \begin{itemize}
         \item Macaco de elevação - acionado eletricamente por um motor com redução para suportar o peso do usuário e da estrutura complementar.
-        
+
         \item Mesa giratória – Usinada para ser acoplada ao macaco e suportar os esforços de peso, composta por 3 peças
             \begin{itemize}
                 \item Base inferior – Acoplada a base do macaco e onde ocorre o acoplamento ‘fêmea’ do rolamento e furo para abrigar potenciômetro;
@@ -51,10 +51,21 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
 
     Utilizando como momento nulo o centro da roda traseira e considerando que toda a plataforma mais o usuário gerem uma força de 1000 N, temos que:
 
-        %∑F = 0 
-        %F2*1110,295 - 1000*479,176 = 0
-        %F2 =~ 431,6 N
-        %F1 =~ 568,4 N
+\begin{equation}\label{eq290}
+	\sum F = 0 
+\end{equation}
+
+ \begin{equation}\label{eq291}
+	F2 \cdot 1110,295 - 1000 \cdot 479,176 = 0 
+\end{equation}
+
+ \begin{equation}\label{eq292}
+	F2 = ~431,6 N
+\end{equation}
+
+ \begin{equation}\label{eq293}
+	F1 =~ 568,4 N
+\end{equation}
 
     Como a bicicleta varia sua inclinação em um ângulo muito pequeno, podemos aproximar para essa força em todo o percurso.
 
@@ -220,7 +231,7 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
     \end{center}      
     %Figura 3: Acoplamento estrutura em uma bicicleta.
   
-    Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura XXX: Análise corpos livres”.  Nesse caso as análises foram feitas com uma força de 2200 N para aumentar o fator de segurança, levando em conta uma situação extrema de uso da estrutura. Fazendo a decomposição dos vetores, essas forças foram distribuídas nos eixos X e Z (de acordo com o sistema de referência do ANSYS).
+    Para calcular os esforços para as simulações, foram usados os cálculos apresentados na figura \ref{analise_corpos_livres} - Análise de Corpos Livres”.  Nesse caso as análises foram feitas com uma força de 2200 N para aumentar o fator de segurança, levando em conta uma situação extrema de uso da estrutura. Fazendo a decomposição dos vetores, essas forças foram distribuídas nos eixos X e Z (de acordo com o sistema de referência do ANSYS).
 
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/forcas_1}
@@ -289,12 +300,12 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
  
     Como pode ser observado, todos os testes validam a peça para fabricação:
     \begin{itemize}
-        \item A figura 6 mostra a deformação elástica (em mm) que a peça 1 sofre com a carga aplicada, esta deformação é considerada nula;
-        \item A figura 7 mostra a tensão de escoamento que o material da peça 1 alcança (75,91 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
-        \item A figura 8 mostra a deformação total da peça 1, considerada nula.
-        \item A figura 9 mostra o Fator de segurança da peça 1 pelas condições de contorno, sendo esse fator igual a 15;
-        \item A figura 10 mostra a vida útil da peça 1 tendo como resultado uma peça com vida útil muito grande.
-        \item A figura 11 mostra os módulos de vibração da peça 1, vemos que os 6 primeiros modos de vibração são considerados nulos, para que a faça com que a estrutura entre em ressonância é necessário chegar ao sétimo modo de vibração de 229,46 Hz, sendo que para a aplicação desta estrutura tal frequência jamais será alcançada.
+        \item A figura \ref{sim_estatica_3} mostra a deformação elástica (em mm) que a peça 1 sofre com a carga aplicada, esta deformação é considerada nula;
+        \item A figura \ref{stress_3} mostra a tensão de escoamento que o material da peça 1 alcança (75,91 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+        \item A figura \ref{deformacao_1} mostra a deformação total da peça 1, considerada nula.
+        \item A figura \ref{fator_seguranca_3} mostra o Fator de segurança da peça 1 pelas condições de contorno, sendo esse fator igual a 15;
+        \item A figura \ref{vida_util_3} mostra a vida útil da peça 1 tendo como resultado uma peça com vida útil muito grande.
+        \item A figura \ref{vibracao_1} mostra os módulos de vibração da peça 1, vemos que os 6 primeiros modos de vibração são considerados nulos, para que a faça com que a estrutura entre em ressonância é necessário chegar ao sétimo modo de vibração de 229,46 Hz, sendo que para a aplicação desta estrutura tal frequência jamais será alcançada.
     \end{itemize}
     
     A peças 1 suporta com segurança os esforços nela aplicado.
@@ -347,11 +358,11 @@ A parte frontal da estrutura comporta a roda dianteira da bicicleta e é respons
     Como pode ser observado, todos os testes também validam a peça para fabricação:
  
     \begin{itemize}
-        \item A figura 12 mostra a deformação elástica (em mm) que a peça 2 sofre com a carga aplicada, esta deformação é considerada nula;
-        \item A figura 13 mostra a tensão de escoamento que a peça 2 alcança (141,39 MPa), sendo também muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
-        \item A figura 14 mostra a deformação total da peça 2, considerada mínima.
-        \item A figura 15 mostra o Fator de segurança da peça 2 pelas condições de contorno, sendo esse fator também igual a 15;
-        \item A figura 16 mostra a vida útil da peça 2 tendo como resultado uma peça com vida útil muito grande.
+        \item A figura \ref{sim_estatica_4} mostra a deformação elástica (em mm) que a peça 2 sofre com a carga aplicada, esta deformação é considerada nula;
+        \item A figura \ref{stress_4} mostra a tensão de escoamento que a peça 2 alcança (141,39 MPa), sendo também muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+        \item A figura \ref{deformacao_2} mostra a deformação total da peça 2, considerada mínima.
+        \item A figura \ref{fator_seguranca_4} mostra o Fator de segurança da peça 2 pelas condições de contorno, sendo esse fator também igual a 15;
+        \item A figura \ref{vida_util_4} mostra a vida útil da peça 2 tendo como resultado uma peça com vida útil muito grande.
         \item Assim como a peça 1 a peça 2 possui os 6 primeiros modos e para chegar na frequência natural da peça seria necessário alcançar 2264 Hz, inalcançável considerando a sua aplicação
     \end{itemize}
 
@@ -359,7 +370,7 @@ A peça 2 também está válida para o uso.
 
 \subsection{Suporte do Rolo}
 
-Suporte do rolo (Figura 1 e figura 2), fica acoplado na estrutura traseira e suporta o rolo.
+Suporte do rolo (figura \ref{esq_suporte_rolo_1} e figura \ref{esq_suporte_rolo_2}), fica acoplado na estrutura traseira e suporta o rolo.
  
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/esq_suporte_rolo_1}
@@ -376,7 +387,7 @@ Suporte do rolo (Figura 1 e figura 2), fica acoplado na estrutura traseira e sup
     \end{center} 
 %Figura 2: Esquema estrutura completa de acoplamento parte traseira.
  
-Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura 2: Análise corpos livres”.  Foi utilizado a força total aplicada na estrutura traseira nos dois suportes do rolo e dividida simultaneamente para a superfície de contado do rolamento em vermelho na Figura 3.
+Para calcular os esforços para as simulações, foram usados os cálculos apresentados na “figura \ref{analise_corpos_livres} - Análise Corpos Livres”.  Foi utilizado a força total aplicada na estrutura traseira nos dois suportes do rolo e dividida simultaneamente para a superfície de contado do rolamento em vermelho na Figura 3.
 
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/forcas_3}
@@ -425,12 +436,12 @@ Com as forças definidas foram feitas as simulações no suporte.
  
 Como pode ser observado, todos os testes validam a peça para o uso:
 \begin{itemize}
-    \item A figura 4 mostra a deformação elástica (em mm) que o suporte sofre com a carga aplicada, esta deformação é considerada nula;
-    \item A figura 5 mostra a tensão de escoamento que o material do suporte alcança (42,844 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
-    \item A figura 6 mostra a deformação total do suporte, considerada mínima.
-    \item A figura 7 mostra o Fator de segurança do suporte pelas condições de contorno, sendo esse fator igual a 15;
-    \item A figura 8 mostra a vida útil do suporte tendo como resultado uma peça com vida útil muito grande.
-    \item A figura 9 mostra os módulos de vibração do suporte, vemos que o primeiro modo de vibração de 211,78 Hz é inalcançável devido as aplicações da estrutura.
+    \item A figura \ref{sim_estatica_5} mostra a deformação elástica (em mm) que o suporte sofre com a carga aplicada, esta deformação é considerada nula;
+    \item A figura \ref{stress_5} mostra a tensão de escoamento que o material do suporte alcança (42,844 MPa), sendo muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
+    \item A figura \ref{deformacao_3} mostra a deformação total do suporte, considerada mínima.
+    \item A figura \ref{fator_seguranca_5} mostra o Fator de segurança do suporte pelas condições de contorno, sendo esse fator igual a 15;
+    \item A figura \ref{vida_util_5} mostra a vida útil do suporte tendo como resultado uma peça com vida útil muito grande.
+    \item A figura \ref{vibracao_3} mostra os módulos de vibração do suporte, vemos que o primeiro modo de vibração de 211,78 Hz é inalcançável devido as aplicações da estrutura.
 \end{itemize}
 
 O Suporte de rolo é valido com segurança para os esforços nela aplicado.
