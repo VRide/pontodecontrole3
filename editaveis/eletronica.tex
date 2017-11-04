@@ -109,7 +109,16 @@ Outra configuração setada no Raspberry foi a configuração do mesmo como brok
 
 \section{Circuitos de Aquisição de Dados}
 
+
 \subsection{Circuitos de Aquisição de Dados da Bicicleta}
+
+O esquema da figura \ref{sensores} mostra a topologia do sistema de aquisição de dados da bicicleta.  Como ilustrado, o Raspberry  concentra os dados, faz alguns processamentos(Linha x do Anexo X), envia os dados para o PC,  e também deve utilizá-los como parâmetro de entrada para sistema de controle.  
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/sensores.png}
+        \captionof{figure}{Arquitetura do Sistema de Aquisição de dados da Bicicleta}
+        \label{sensores}
+   \end{center}
+
 
 \subsubsection{Sensor de RPM e velocidade}    
 
@@ -141,7 +150,50 @@ Outra configuração setada no Raspberry foi a configuração do mesmo como brok
     
     	A saída do sensor é conectada na Raspbery Pi 3. Na Raspberry  Pi 3 foi implementado um código em python que conta as bordas de descida na porta de GPIO a qual a saída está conectada. Esta borda de descida indica que o sensor detectou uma rotação. A lógica implementada no código consiste em contar quantas rotações ocorrerão em um segundo e então multiplicar esse número por 60 para se ter um valor de RPM. Toda vez que há uma borda de descida uma interrupção é chamada e um contador é incrementado, a cada segundo é feito o cálculo em cima do valor do contador e este é zerado em seguida para se iniciar uma nova contagem.
  
-    
+ \subsubsection{Sensor de Posição Angular do Guidão}        
+
+A posição angular foi obtida acoplando na mesa giratória da roda dianteira um potenciômetro. Para se alcançar uma boa sensação de imersão do usuário foi necessário  criar entradas  que apresentassem  vários níveis de intensidade, de modo a simular uma grandeza analógica. Foi utilizado o conversor  analógico digital ADC0809 para fazer a conversão da posição angular do guidão em volts(saída do potenciômetro) para uma representação binária em 8 bits. O anexo X(Linhas x a y) mostra o algoritmo que implementa a conversão para graus, sendo que quando a roda está alinhada com a bicicleta é a posição angular $0\,^{\circ}$, a esquerda posição angular negativa(até $-135\,^{\circ}$), e a direita posição angular positiva(até $135\,^{\circ}$).
+
+Com essa implementação foi alcançado a seguinte resolução:
+
+\begin{equation}
+Resolução =  \frac{270\,^{\circ}}{2^n} = 1.05\,^{\circ}/bit
+\label{apon}
+\end{equation}
+
+Onde: 
+\begin{quote}
+$270\,^{\circ}$ = Inclinaçao máxima em graus do potenciômetro.\\
+$n$ =  Número de bits do conversor ADC0809.\\
+\end{quote}
+
+
+
+\subsubsection{Aquisição da Intensidade de Frenagem} 
+
+A intensidade de frenagem foi obtida capturando a força que a borracha de freio aplica no aro da bicicleta. Foi utilizado um sensor FSR(Figura X) com o circuito de instrumentação mostrado abaixo.
+
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/FSR_2.png}
+        \captionof{figure}{Sensor FSR.}
+        \label{fsr}
+   \end{center}
+
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/FSR.png}
+        \captionof{figure}{Circuito de condicionamento do FSR.}
+        \label{con_fsr}
+   \end{center}
+
+O gráfico abaixo mostra a resposta força/tensão do circuito acima para diferentes resistências R1.  A fim de reduzir a sensibilidade do mecanismo, adicionamos espumas em série com o FSR, com isso uma parcela da força aplicada pela borracha do freio é transmitida para o FSR.
+
+
+            \begin{center}
+   	\includegraphics[scale=0.80]{figuras/grafico_fsr.png}
+        \captionof{figure}{Divisor de Tensão FSR}
+        \label{graf_fsr}
+   \end{center}
+   
 
 \subsection{Circuitos de Aquisição de Dados da Fisiológicos}
 
