@@ -181,11 +181,11 @@ O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, co
     
 \subsubsection{Estimação de Frequência Respiratória com Uso de FSR}
 
-	Um dos dados fisiológicos que presta informação útil acerca do estresse causado pela atividade de ciclismo é a frequência respiratória. Esta grandeza varia proporcionalmente a frequência cardíaca, uma vez que com o aumento da frequência cardíaca mais sangue é enviado aos pulmões e logo há uma maior demanda de taxa trocas de gasosas [1].  Monitorar esse dado ajuda a perceber se o usuário está respirando de maneira correta para o melhor desempenho.
+	Um dos dados fisiológicos que presta informação útil acerca do estresse causado pela atividade de ciclismo é a frequência respiratória. Esta grandeza varia proporcionalmente a frequência cardíaca, uma vez que com o aumento da frequência cardíaca mais sangue é enviado aos pulmões e logo há uma maior demanda de taxa trocas de gasosas \cite{rosero}.  Monitorar esse dado ajuda a perceber se o usuário está respirando de maneira correta para o melhor desempenho.
     
-	Para se mensurar a frequência respiratória efetivamente deve se aferir as trocas gasosas em cada respiração, esta demanda exige que um aparato seja conectado ao redor das vias nasais para fazer a medida [2]. Para o escopo do trabalho esta medida não pode ser implementada visto que o usuário já estará usando um óculos de realidade virtual consideravelmente grande e este aparato traria um incomodo para o usuário, o que provavelmente o faria não usar a solução ou interferir na análise de estresse causada.
+	Para se mensurar a frequência respiratória efetivamente deve se aferir as trocas gasosas em cada respiração, esta demanda exige que um aparato seja conectado ao redor das vias nasais para fazer a medida \cite{miranda2015}. Para o escopo do trabalho esta medida não pode ser implementada visto que o usuário já estará usando um óculos de realidade virtual consideravelmente grande e este aparato traria um incomodo para o usuário, o que provavelmente o faria não usar a solução ou interferir na análise de estresse causada.
     
-	Uma solução para suprir essa demanda é ao invés de aferir as trocas gasosas aferir a expansão da caixa torácica a cada respiração do usuário. Quando o usuário respira a variação de gás no pulmão faz com este se contraia e expanda, ao se ler o nível dessa expansão é possível ter uma boa estimativa da frequência respiratória do atleta [2].
+	Uma solução para suprir essa demanda é ao invés de aferir as trocas gasosas aferir a expansão da caixa torácica a cada respiração do usuário. Quando o usuário respira a variação de gás no pulmão faz com este se contraia e expanda, ao se ler o nível dessa expansão é possível ter uma boa estimativa da frequência respiratória do atleta \cite{miranda2015}.
     
 	Para e verificar a expansão da caixa torácica foi usado um FSR (Force-Sensing Resistor) este dispositivo é um material que tem sua resistência elétrica variada de forma inversamente proporcional a tensão mecânica aplicada em sua superfície. Logo, basta colocar um FSR com sua superfície em contato com o tórax do atleta.
     
@@ -195,7 +195,7 @@ O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, co
         \label{fsr_curve}
     \end{center}
 
-	O FSR usado foi o de modelo quadrado de lado medindo 4,38 cm da Interlink Electronics. Sua resistência varia de um valor de mais de 1MOhm, quando está sem carga, para algumas unidades de Ohm, quando está saturado de carga [3].
+	O FSR usado foi o de modelo quadrado de lado medindo 4,38 cm da Interlink Electronics. Sua resistência varia de um valor de mais de 1MOhm, quando está sem carga, para algumas unidades de Ohm, quando está saturado de carga \cite{fsr_guide}.
     
     \begin{center}
     	\includegraphics[scale=0.4]{figuras/fsr_model.jpg}
@@ -207,7 +207,7 @@ O circuito desenvolvido utiliza de um sensor optoeletrônico de refletância, co
     
 	O circuito montado para o estimador de respiração usado está no Anexo I, a saída da ponte de Wheatstone é conectada um amplificador diferencial DC de alta impedância de entrada, a topologia do amplificador diferencial usa dois estágios de amplificadores LM324 e foi baseada em um esquemático que consta no próprio datasheet do mesmo. O LM324 foi escolhido devido a não precisar de alimentação simétrica, podendo ser alimentado apenas com 5 V. 
     
-	Após o estágio diferenciador o sinal é passado através de um filtro RC Passa-Baixas de 1ª ordem, com frequência de corte de 34 Hz. Um adulto possuí uma frequência de movimentos respiratórios por minuto entre 12 e 48 movimentos [4], logo uma frequência baixa ade 34 Hz é suficiente para preservar o sinal de variação lenta. Após o estágio de filtragem o sinal é passando por um \textit{buffer} e um divisor de tensão para condicionar o sinal de saída para próximo de 1 V, valor de entrada do conversor analógico-digital do módulo transmissor ESP2866.
+	Após o estágio diferenciador o sinal é passado através de um filtro RC Passa-Baixas de 1ª ordem, com frequência de corte de 34 Hz. Um adulto possuí uma frequência de movimentos respiratórios por minuto entre 12 e 48 movimentos \cite{siate}, logo uma frequência baixa ade 34 Hz é suficiente para preservar o sinal de variação lenta. Após o estágio de filtragem o sinal é passando por um \textit{buffer} e um divisor de tensão para condicionar o sinal de saída para próximo de 1 V, valor de entrada do conversor analógico-digital do módulo transmissor ESP2866.
     
     O circuito do estimador de respiração foi simulado no software ADS 2009, da Agilent. A figura de sua simulação consta na Fig.\ref{fsr_ads}.  
     

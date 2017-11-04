@@ -88,7 +88,11 @@ Especificações Raspberry Pi 3:
 \item Dimensões: 85 x 56 x 17mm
 \end{itemize}
 
-No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um access point para que os sensores wireless pudessem se conectar ao broker. Além do mais, ele permite a utilização do cabo de rede para conexão com o computador que irá gerar os gráficos do jogo. As configurações setadas estão no Raspberry estão explicadas passo a passo no apêndice XXX.
+No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um access point para que os sensores wireless pudessem se conectar ao broker. Além do mais, ele permite a utilização do cabo de rede para conexão com o computador que irá gerar os gráficos do jogo. As configurações setadas estão no Raspberry estão explicadas passo a passo no anexo 4. 
+
+Outra configuração setada no Raspberry foi a configuração do mesmo como broker. Para tal função, é necessária a instalação de uma aplicação já consolidada no MQTT, chamada de Mosquitto. Assim que instalada, a aplicação já funciona como um daemon e é carregada concomitantemente ao kernel do Raspberry. Isto é, assim que iniciado, o Raspberry executa a aplicação que o permite ser o broker.
+
+
 \subsection{Conversor Analógico-Digital ADC0809}
 
 	Para fazer a conversão analógico-digital dos dados de frenagem e posição angular do guidão foi usado o conversor analógico-digital ADC0809, devido ao Raspberry Pi 3 não possuir conversores analógico-digitais. O ADC0809 é um conversor de 8 bits de resolução e frequência de amostragem de 10 kHz. O conversor conta com 8 canais de entrada independentes e saída paralela de 8 bits. 
@@ -142,8 +146,9 @@ No Raspberry foram desenvolvidas as configurações de rede. Nele foi feito um a
 \subsection{Circuitos de Aquisição de Dados da Fisiológicos}
 
 \subsubsection{Atividade Eletrodermal via GSR}
-No estudo dos sinais fisiológicos na Engenharia Biomédica o sinal de Atividade Eletrodermal é um dos mais importantes, isto devido ao fato de que a sua resposta é baseada nas características elétricas da pele. Sabe-se a mais de 100 anos \cite{eletrodermal_1} que a resposta galvânica da pele é um efeito proveniente das regiões periféricas e que, muitas das vezes, pode ser utilizado como uma medida para níveis de estresse em diversas situações \cite{eletrodermal_2}. 
-	Para mensurar o nível de estresse no ambiente virtual, um dos objetivos propostos pelo trabalho, utilizou-se então de um circuito GSR (Galvanic Skin Response) desenvolvido na dissertação de \cite{mateusr.2014}, almejando disponibilizar para o usuário informações sobre o nível de estresse, os quais podem ser comparados a posteriori com atividades fora da realidade virtual.
+    No estudo dos sinais fisiológicos na Engenharia Biomédica o sinal de Atividade Eletrodermal é um dos mais importantes, isto devido ao fato de que a sua resposta é baseada nas características elétricas da pele. Sabe-se a mais de 100 anos \cite{eletrodermal_1} que a resposta galvânica da pele é um efeito proveniente das regiões periféricas e que, muitas das vezes, pode ser utilizado como uma medida para níveis de estresse em diversas situações \cite{eletrodermal_2}. 
+
+	Para mensurar o nível de estresse no ambiente virtual, um dos objetivos propostos pelo trabalho, utilizou-se então de um circuito GSR (Galvanic Skin Response) desenvolvido na dissertação de \cite{miranda2015}, almejando disponibilizar para o usuário informações sobre o nível de estresse, os quais podem ser comparados a posteriori com atividades fora da realidade virtual.
 
 	O circuito utilizado possui dois seguidores de tensão, que têm como objetivo diminuir o consumo de energia, pois o circuito é alimentado por bateria e tende-se a facilitar a manutenção para usuário final. Ainda usufrui-se de dois filtros passa-baixas, com frequências de corte teóricas de 60Hz e 120Hz (harmônicos advindos da rede de energia elétrica). Utilizou-se então dois filtros com seguidores de tensão, os quais podem ser observados no esquemático presente no anexo 1, realizando algumas alterações nos valores dos componentes para ser possível a utilização de componentes comerciais.
 	Os resultados obtidos em simulação, podem ser observados na Fig.\ref{gsr_sim}.
