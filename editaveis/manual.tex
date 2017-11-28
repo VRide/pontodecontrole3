@@ -1,0 +1,35 @@
+O ambiente para desenvolver o jogo para o VRide é baseado nas versões da \textit{Unity} e do \textit{Oculus Integration}. Abaixo estão as versões de cada componente necessário para o ambiente funcionar no \textit{Oculus Development Kit} 1 (DK1):
+
+\begin{itemize}
+\item Unity3D 4.6.0
+\item OVR Unity Integration 0.4.2lib
+\item Oculus Runtime SDK 0.4.2
+\end{itemize}
+
+Com cada um destes itens baixados, segue a instalação passo a passo.
+
+\section{Passo a passo}
+
+Antes de prosseguir, verifique se você não possui nenhuma versão da \textit{Unity} instalada.
+
+\begin{enumerate}
+\item Instale a \textit{Unity} normalmente, clicando em próximo até terminar.
+
+\item Para instalar o crack, siga estas etapas:
+
+2.1. Copie o arquivo Unity.exe da pasta crack para a pasta \textit{Unity} (geralmente C: $\backslash$Program Files$\backslash$Unity$\backslash$Editor).
+
+2.2. Copie o arquivo \textit{Unity\_v4.x.ulf} da pasta crack para dados \textit{Unity} (geralmente C: $\backslash$ProgramData$\backslash$Unity).
+
+NOTA: Se esta pasta não aparecer, você precisa configurar para exibir as pastas ocultas.
+
+\item Instale o \textit{Oculus Runtime}, \textit{oculus\_runtime\_rev\_1\_sdk\_0.4.2\_win.exe}, apenas pressionando seguir.
+
+\item Extraia os arquivos de \textit{ovr\_unity\_0.4.2\_lib.zip}. Abra a \textit{Unity}, e então faça um duplo clique em \textit{OculusUnityIntegration.unitypackage}. Isso importará as coisas necessárias para executar o \textit{Oculus} na \textit{Unity}.
+
+\item Para testar o \textit{Oculus}, é importante importar OculusUnityIntegrationTuscanyDemo.unitypackage. Na pasta Tuscany tem um projeto \textit{Unity}, quando clicar na barra lateral direita aparecerá um botão para abrir.
+
+\item Antes de executar a demo, instale outros \textit{drivers} para executar o \textit{Oculus}. Eles estão em C: Usuário$\backslash$Seu nome de usuário$\backslash$AppData$\backslash$Local$\backslash$Temp$\backslash$Oculus Inc. Então, você precisa executar \textit{OculusDisplayDriver\_\Win8.1\_x64.msi} e \textit{OculusMSI\_x64.msi}.
+
+\item Para testar que tudo está funcionando corretamente, execute o projeto em \textit{Unity}.
+\end{enumerate}
