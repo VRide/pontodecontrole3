@@ -220,3 +220,63 @@ Para o armazenamento das informações relativas a conta de um usuário foi adot
 O banco de dados escolhido foi o \textit{iBoxBD} (\url{http://www.iboxdb.com/}), uma banco de bados totalmente não relacional, que é leve e usa pouca memória. Ele é executado como um servidor incorporado como banco de dados local, também suporta conexão TCP como parte do sistema distribuído. Outras vantagens são: único arquivo, ausência da necessidade de configuração e suporte ao C\#.
 
 Na implementação dele no projeto foi criado um \textit{Singleton}, que instância e gerencia a \textit{“Box”}, que é parte desse BD que cuida do contexto das operações e as executa. Além disso foi criada uma DAO para o \textit{Player}, que separa as regras de negócio do jogo do acesso aos dados, que se dá pelo \textit{Singleton}. O \textit{Player}, por sua vez, possui todas as informações que se refere a ele e que vai adquirindo, já citadas anteriormente.
+
+\section{Métricas de Código}
+
+A escolha das métricas tem como base as que o \textit{Analizo} disponibiliza para a linguagem Java/C++, a fim de garantir a manutenibilidade do código pelos desenvolvedores. Os indicadores foram retirados da ferramenta \textit{Analizo}, ao se observar que são níveis que vão garantir o objetivo estipulado de qualidade de código.
+
+\begin{table}[htp]
+\centering
+\caption{Indicadores}
+\label{my-label}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Métrica}                                                                                                                         & \textbf{Código} & \textbf{Descrição}                                                                                                                                                                                                                                                & \textbf{Indicadores}                                                                                  \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textit{Average Cyclomatic} \\ \textit{Complexity per Method} \\ (Média de complexidade \\ ciclomática por método)\end{tabular} & accm            & \begin{tabular}[c]{@{}c@{}}Complexidade ciclomática nada\\  mais é do que o número de \\ caminhos independentes que um \\ software pode seguir \\ em sua execução, \\ calculado a partir da\\  representação em grafo \\ das estruturas de controle.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 5{[}\\ Regular {[}5, 7{[}\\ Ruim {[}7, INF{[}\end{tabular}       \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textit{Average Method} \\ \textit{Lines of Code} \\ (Média de linhas de \\ código por método)\end{tabular}                     & amloc           & \begin{tabular}[c]{@{}c@{}}AMLOC representa a média\\  do número de linhas dos\\  métodos de uma classe.\end{tabular}                                                                                                                                             & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 10{[}\\ Regular {[}10, 13\\ {[}Ruim {[}13, INF{[}\end{tabular}   \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textit{Lack of Cohesion} \\ \textit{of Methods}\\ (Ausência de coesão \\ em métodos)\end{tabular}                              & lcom4           & \begin{tabular}[c]{@{}c@{}}LCOM4 representa a coesão \\ entre os métodos da classe.\\  Ela verifica a relação entre os\\  métodos e atributos de uma \\ mesma classe.\end{tabular}                                                                                & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 2{[}\\ Regular {[}2, 5{[}\\ Ruim {[}5, INF{[}\end{tabular}       \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textit{Lines of Code}\\ (Linhas de código\\  por classe)\end{tabular}                                                 & loc             & \begin{tabular}[c]{@{}c@{}}LOC indica o número de linhas\\  executáveis de uma classe, \\ desconsiderando linhas \\ em branco e comentários.\end{tabular}                                                                                                         & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 70{[}\\ Regular {[}70, 130{[}\\ Ruim {[}130, INF{[}\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textit{Number of Methods}\\ (Número de métodos)\end{tabular}                                                          & nom             & \begin{tabular}[c]{@{}c@{}}NOM é uma métrica de \\ tamanho que conta o \\ número de métodos \\ de uma classe.\end{tabular}                                                                                                                                        & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 10{[}\\ Regular {[}10, 40{[}\\ Ruim {[}40, INF{[}\end{tabular}   \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\caption{Métricas de Código}
+\label{figura:metricas}
+\begin{tabular}{lllllll}
+\hline
+Script & ACCM & AMLOC & LCOM4 & LOC & NOM \\
+\hline
+CameraMovementScript.cs & 4.25\cellcolor[HTML]{9AFF99} & 23.375\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 187\cellcolor[HTML]{FFCE93} & 0\cellcolor[HTML]{9AFF99} \\
+CheeringScript.cs & 2.5\cellcolor[HTML]{9AFF99} & 8.5\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 17\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+FenceAudioScript.cs & 1\cellcolor[HTML]{9AFF99} & 4.5\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 9\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+GrassAudioScript.cs & 1.2857\cellcolor[HTML]{9AFF99} & 4.2857\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 30\cellcolor[HTML]{9AFF99} & 7\cellcolor[HTML]{9AFF99} \\
+HandleBarScript.cs & 1\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 8\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+InputOutput.cs & 1.875\cellcolor[HTML]{9AFF99} & 11\cellcolor[HTML]{FFFC9E} & 3\cellcolor[HTML]{FFFC9E} & 176\cellcolor[HTML]{FFCE93} & 16\cellcolor[HTML]{FFFC9E} \\
+KneeScript.cs & 1\cellcolor[HTML]{9AFF99} & 3.5\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 7\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+AccountDelete.cs & 1.8\cellcolor[HTML]{9AFF99} & 6.8\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 34\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
+AccountSelect.cs & 1.4285\cellcolor[HTML]{9AFF99} & 6.7142\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 47\cellcolor[HTML]{9AFF99} & 7\cellcolor[HTML]{9AFF99} \\
+CountLaps.cs & 1.8\cellcolor[HTML]{9AFF99} & 6.6\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 33\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
+IgnoreRaycast.cs & 1\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
+LoadLevel.cs & 1.2\cellcolor[HTML]{9AFF99} & 4.4\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 22\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
+LookInputModule.cs & 7\cellcolor[HTML]{FFCE93} & 32.25\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 258\cellcolor[HTML]{FFCE93} & 8\cellcolor[HTML]{9AFF99} \\
+MenuController.cs & 1.8\cellcolor[HTML]{9AFF99} & 6.4\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 32\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
+WeightHeight.cs & 2.5714\cellcolor[HTML]{9AFF99} & 9.1428\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 64\cellcolor[HTML]{9AFF99} & 7\cellcolor[HTML]{9AFF99} \\
+NewBehaviourScript.cs & 1\cellcolor[HTML]{9AFF99} & 3\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 6\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+PeopleScript.cs & 3\cellcolor[HTML]{9AFF99} & 13\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 13\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
+PlayerInfo.cs & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} \\
+SkyScript.cs & 2.25\cellcolor[HTML]{9AFF99} & 13.5\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 54\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} \\
+Statistics/EmulateValues.cs & 1\cellcolor[HTML]{9AFF99} & 22.5\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 45\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+Statistics/FinalImageScript.cs & 2.5\cellcolor[HTML]{9AFF99} & 20.25\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 81\cellcolor[HTML]{FFFC9E} & 4\cellcolor[HTML]{9AFF99} \\
+Statistics/ImageScript.cs & 4\cellcolor[HTML]{9AFF99} & 30.5\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 122\cellcolor[HTML]{FFFC9E} & 4\cellcolor[HTML]{9AFF99} \\
+Statistics/ResumeScript.cs & 6\cellcolor[HTML]{FFFC9E} & 19\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 19\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
+DatabaseSingleton.cs & 2\cellcolor[HTML]{9AFF99} & 12\cellcolor[HTML]{FFFC9E} & 1\cellcolor[HTML]{9AFF99} & 12\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
+Measure.cs & 1\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 10\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+MeasureDAO.cs & 1\cellcolor[HTML]{9AFF99} & 3\cellcolor[HTML]{9AFF99} & 6\cellcolor[HTML]{FFCE93} & 18\cellcolor[HTML]{9AFF99} & 6\cellcolor[HTML]{9AFF99} \\
+Player.cs & 1\cellcolor[HTML]{9AFF99} & 6.3333\cellcolor[HTML]{9AFF99} & 3\cellcolor[HTML]{FFFC9E} & 19\cellcolor[HTML]{9AFF99} & 3\cellcolor[HTML]{9AFF99} \\
+PlayerDAO.cs & 1\cellcolor[HTML]{9AFF99} & 3\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{FFCE93} & 15\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
+ThighScript.cs & 1\cellcolor[HTML]{9AFF99} & 6.5\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 13\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
+WheelMovement.cs & 1\cellcolor[HTML]{9AFF99} & 2.5\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 5\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\\hline
+\end{tabular}
+\end{table}
