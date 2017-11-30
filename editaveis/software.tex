@@ -1,6 +1,6 @@
 \section{Fluxograma do jogo}
 
-A Figura \ref{figura:fluxograma} detalha o fluxo do jogo com as ações possivelmente executadas pelos jogadores. 
+A Figura \ref{figura:fluxograma} detalha o fluxo do jogo com as ações possivelmente executadas pelos jogadores.
 
 \begin{center}
 	\includegraphics[scale=0.5]{figuras/fluxograma}
@@ -215,20 +215,32 @@ Como a integração com o sistema físico ainda não foi realizada, é implement
 \end{center}
 
 \subsection{Banco de Dados}
-Para o armazenamento das informações relativas a conta de um usuário foi adotado a utilização de um banco de dados. Tais informações incluem sendo tanto os dados pessoais como, nome, altura e peso, quanto os dados relativos ao desenvolver do usuário, como o tempo das voltas, batimentos cardíacos durante a corrida, frequência respiratória e velocidade no circuito, entre outros, que poderão vir a ser adicionados para melhorar a funcionalidade de estatísticas.
+Para o armazenamento das informações relativas a conta de um usuário foi adotado a utilização de um banco de dados. Tais informações incluem tanto os dados pessoais como, nome, altura e peso, quanto os dados relativos ao desenvolver do usuário, como o tempo das voltas, batimentos cardíacos durante a corrida, frequência respiratória e velocidade no circuito, entre outros, que poderão vir a ser adicionados para melhorar a funcionalidade de estatísticas.
 
 O banco de dados escolhido foi o \textit{iBoxBD} (\url{http://www.iboxdb.com/}), uma banco de bados totalmente não relacional, que é leve e usa pouca memória. Ele é executado como um servidor incorporado como banco de dados local, também suporta conexão TCP como parte do sistema distribuído. Outras vantagens são: único arquivo, ausência da necessidade de configuração e suporte ao C\#.
 
-Na implementação dele no projeto foi criado um \textit{Singleton}, que instância e gerencia a \textit{“Box”}, que é parte desse BD que cuida do contexto das operações e as executa. Além disso foi criada uma DAO para o \textit{Player}, que separa as regras de negócio do jogo do acesso aos dados, que se dá pelo \textit{Singleton}. O \textit{Player}, por sua vez, possui todas as informações que se refere a ele e que vai adquirindo, já citadas anteriormente.
+Na implementação dele no projeto foi criado um \textit{Singleton}, que instância e gerencia a \textit{“Box”}, que é parte desse BD que cuida do contexto das operações e as executa. Além disso foi criada uma DAO para a classe \textit{Player} e para a \textit{Measure}, que separa as regras de negócio do jogo do acesso aos dados, que se dá pelo \textit{Singleton}. Na figura \ref{figura:banco_de_dados} é possível visualizar o que o banco de dados guarda atualmente.
+
+\begin{center}
+	\includegraphics[scale=0.6]{figuras/banco_de_dados}
+	\captionof{figure}{Diagrama de classe das entidades do Banco de Dados}
+	\label{figura:banco_de_dados}
+\end{center}
+
+Por ser um banco de dados não relacional, o relacionamento representado no diagrama \ref{figura:banco_de_dados} não é realizado por meio de chaves estrangeiras, e sim por um único índice presente na classe \textit{Measure} pelo \textit{playerId}. Essa entidade guarda as informações referentes as medidas que são aferidas durante o jogo. Para não onerar o banco de dados, a cada corrida é calculado o valor médio e identificado o valor mínimo e máximo. O \textit{type} nesse caso guarda o tipo de medida que está sendo guardada, sendo referente ao Enum \textit{Type} presente nessa mesma classe.
+
+A classe \textit{Player} ainda guarda informações como o tempo total de jogo, a distância percorrida e a quantidade de corrida realizada em cada modo de jogo.
 
 \section{Métricas de Código}
 
-A escolha das métricas tem como base as que o \textit{Analizo} disponibiliza para a linguagem Java/C++, a fim de garantir a manutenibilidade do código pelos desenvolvedores. Os indicadores foram retirados da ferramenta \textit{Analizo}, ao se observar que são níveis que vão garantir o objetivo estipulado de qualidade de código.
+Ao decorrer do projeto viu-se a necessidade de se coletar métricas principalmente para averiguar se o código está em boas condições para que seja manutenido e evoluído. Para isso, foi escolhido algumas métricas, que serão explicadas posteriormente, do \textit{Analizo} disponibilizas para a linguagem Java/C++.
+
+Os indicadores propostos tem como base um artigo sobre o \textit{kalibro} \cite{dekalibro}. Procurou-se observar níveis que vão garantir o objetivo estipulado de qualidade de código. A tabela \ref{metricas_descricao} apresenta as métricas escolhidas.
 
 \begin{table}[htp]
 \centering
 \caption{Indicadores}
-\label{my-label}
+\label{metricas_descricao}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Métrica}                                                                                                                         & \textbf{Código} & \textbf{Descrição}                                                                                                                                                                                                                                                & \textbf{Indicadores}                                                                                  \\ \hline
@@ -239,6 +251,8 @@ A escolha das métricas tem como base as que o \textit{Analizo} disponibiliza pa
 \begin{tabular}[c]{@{}c@{}}\textit{Number of Methods}\\ (Número de métodos)\end{tabular}                                                          & nom             & \begin{tabular}[c]{@{}c@{}}NOM é uma métrica de \\ tamanho que conta o \\ número de métodos \\ de uma classe.\end{tabular}                                                                                                                                        & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 10{[}\\ Regular {[}10, 40{[}\\ Ruim {[}40, INF{[}\end{tabular}   \\ \hline
 \end{tabular}
 \end{table}
+
+A partir das métricas escolhidas foi realizado a coleta dos dados e análise com base nos indicadores. A tabela \ref{figura:metricas} apresenta os \textit{scripts} que foram criados e os valores referentes para cada métrica. A coloração de cada célula foi realizada para melhor representar a situação de cada um, sendo que o verde significa bom, o amarelo significa regular e o laranja significa ruim.
 
 \begin{table}[htp]
 \centering
