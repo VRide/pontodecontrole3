@@ -147,6 +147,13 @@ O modelo de domínio representado nas (Figuras \ref{figura:menu_domain} e \ref{f
 	\label{figura:main_domain}
 \end{center}
 
+
+\begin{center}
+	\includegraphics[scale=0.5]{figuras/statistics}
+	\captionof{figure}{Modelo de Domínio - \textit{Statistics}.}
+	\label{figura:statistics}
+\end{center}
+
 \subsection{Arquitetura de Componentes}
 
 A \textit{Unity 3D} possui uma arquitetura baseada em componentes. Tal decisão arquitetural é baseada no princípio de que os objetos de um jogo - como personagem, árvore, chão - são formados por diversos componentes diferentes - como imagem, som, colidível e outros. Dessa forma, ao invés de cada tipo de objeto do jogo possuir novas funcionalidades por meio de herança, novos componentes são adicionados a eles de forma dinâmica. Na \textit{Unity}, em específico, cada objeto herda da classe \textit{GameObject} que possui métodos de adicionar e remover componentes. Todos os componentes herdam da classe \textit{Component} e alguns dos mais usados incluem:
@@ -260,14 +267,12 @@ AccountSelect.cs & 1.4285\cellcolor[HTML]{9AFF99} & 6.7142\cellcolor[HTML]{9AFF9
 CountLaps.cs & 1.8\cellcolor[HTML]{9AFF99} & 6.6\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 33\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
 IgnoreRaycast.cs & 1\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
 LoadLevel.cs & 1.2\cellcolor[HTML]{9AFF99} & 4.4\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 22\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
-LookInputModule.cs & 7\cellcolor[HTML]{FFCE93} & 32.25\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 258\cellcolor[HTML]{FFCE93} & 8\cellcolor[HTML]{9AFF99} \\
 MenuController.cs & 1.8\cellcolor[HTML]{9AFF99} & 6.4\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 32\cellcolor[HTML]{9AFF99} & 5\cellcolor[HTML]{9AFF99} \\
 WeightHeight.cs & 2.5714\cellcolor[HTML]{9AFF99} & 9.1428\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 64\cellcolor[HTML]{9AFF99} & 7\cellcolor[HTML]{9AFF99} \\
 NewBehaviourScript.cs & 1\cellcolor[HTML]{9AFF99} & 3\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{FFFC9E} & 6\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
 PeopleScript.cs & 3\cellcolor[HTML]{9AFF99} & 13\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 13\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
 PlayerInfo.cs & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} & 0\cellcolor[HTML]{9AFF99} \\
 SkyScript.cs & 2.25\cellcolor[HTML]{9AFF99} & 13.5\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 54\cellcolor[HTML]{9AFF99} & 4\cellcolor[HTML]{9AFF99} \\
-Statistics/EmulateValues.cs & 1\cellcolor[HTML]{9AFF99} & 22.5\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 45\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
 Statistics/FinalImageScript.cs & 2.5\cellcolor[HTML]{9AFF99} & 20.25\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 81\cellcolor[HTML]{FFFC9E} & 4\cellcolor[HTML]{9AFF99} \\
 Statistics/ImageScript.cs & 4\cellcolor[HTML]{9AFF99} & 30.5\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 122\cellcolor[HTML]{FFFC9E} & 4\cellcolor[HTML]{9AFF99} \\
 Statistics/ResumeScript.cs & 6\cellcolor[HTML]{FFFC9E} & 19\cellcolor[HTML]{FFCE93} & 1\cellcolor[HTML]{9AFF99} & 19\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} \\
