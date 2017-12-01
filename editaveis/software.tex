@@ -133,9 +133,9 @@ As imagens abaixo contém os elementos principais que compõem o cenário do jog
 
 \subsection{Modelo de Domínio}
 
-O modelo de domínio representado nas (Figuras \ref{figura:menu_domain}, \ref{figura:main_domain} e \ref{figura:statistics}) faz referência aos três módulos principais do desenvolvimento do jogo. Cada uns dos modelos abaixo representam as cenas criadas, Menu, \textit{Track} e \textit{Statistics}. 
+O modelo de domínio representado nas (Figuras \ref{figura:menu_domain}, \ref{figura:main_domain} e \ref{figura:statistics}) faz referência aos três módulos principais do desenvolvimento do jogo. Cada uns dos modelos abaixo representam as cenas criadas, Menu, \textit{Track} e \textit{Statistics}.
 
-O Menu sendo representado por todos os componentes que interagem com o usuário para que ele escolha o modo de jogo e pelos componentes que armazenam informações do usuário. Os painéis do menu: \textit{Player Height, Start, Player Name, Choose Gender, Choose Lap, Player Weight, Choose Mode, Choose Account} fazem parte do \textit{Canvas} que é a base que agrega todos os painéis do menu. O cursor é o elemento que se move a partir dos movimentos da cabeça com o oculus e que seleciona as opções do menu. O \textit{terrain}, como o próprio nome diz, é o terreno da cena do Menu. 
+O Menu sendo representado por todos os componentes que interagem com o usuário para que ele escolha o modo de jogo e pelos componentes que armazenam informações do usuário. Os painéis do menu: \textit{Player Height, Start, Player Name, Choose Gender, Choose Lap, Player Weight, Choose Mode, Choose Account} fazem parte do \textit{Canvas} que é a base que agrega todos os painéis do menu. O cursor é o elemento que se move a partir dos movimentos da cabeça com o oculus e que seleciona as opções do menu. O \textit{terrain}, como o próprio nome diz, é o terreno da cena do Menu.
 
 \begin{center}
 	\includegraphics[scale=0.5]{figuras/menu_domain}
@@ -143,7 +143,7 @@ O Menu sendo representado por todos os componentes que interagem com o usuário 
 	\label{figura:menu_domain}
 \end{center}
 
-O \textit{Track} engloba os componentes utilizados na construção do percurso que o usuário irá fazer ao jogar, como os cenários, personagens, torcida, cerca. Este modelo faz referência as duas modalidades de jogo, tanto o Modo Livre quanto o Modo Corrida.  
+O \textit{Track} engloba os componentes utilizados na construção do percurso que o usuário irá fazer ao jogar, como os cenários, personagens, torcida, cerca. Este modelo faz referência as duas modalidades de jogo, tanto o Modo Livre quanto o Modo Corrida.
 
 \begin{center}
 	\includegraphics[scale=0.5]{figuras/main_domain}
@@ -179,6 +179,8 @@ Em relação à construção do jogo, os menus e fases são agrupados em cenas (
 	\captionof{figure}{Arquitetura de Componentes. Fonte: \cite{arquitetura}}
 	\label{figura:arquiteturacomponentes}
 \end{center}
+
+Os códigos escritos pela equipe de \textit{software} são, em sua maioria, \textit{scripts}. Eles são adicionados como componentes aos \textit{game objects} e sobrescrevem métodos de inicialização, atualizacão, detecção de colisão e outros. Além desses, há outras classes notáveis como a InputOutput, que age como um \textit{facade} e se responsabiliza por encapsular a comunicação com o MQTT, impedindo que as variações neste afetem o comportamento da bicicleta virtual, e a PlayerInfo, responsável por armazenar as preferências do jogador entre as cenas.
 
 \subsubsection{\textit{Scripts}}
 
