@@ -1,4 +1,4 @@
-\section{Parte Frontal} 
+\section{Parte Frontal}
 
 A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a roda dianteira da bicicleta e é responsável pela elevação e descida da plataforma dando a sensação de um terreno com variação de altura para que o usuário tenha uma experiência mais imersiva ao ambiente virtual.
 
@@ -7,7 +7,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \captionof{figure}{CAD da estrutura dianteira}
         \label{partedafrente}
     \end{center}
-    
+
     % Foto real estrutura dianteira
 
     Como anteriormente definido a esta parte fronta comporta:
@@ -20,7 +20,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
                 \item Rolamento;
                 \item Base superior – Acoplada como "macho" no rolamento e sustentando a roda dando segurança e permitindo o giro do guidão controlando jogo
             \end{itemize}
-    \end{itemize}    
+    \end{itemize}
 
 
 \subsection{Mesa Giratória}
@@ -30,7 +30,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \captionof{figure}{Esquema de acoplamento da parte frontal}
         \label{acoplamento_frontal}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/acoplamento_frontal_2}
         \captionof{figure}{Outra vista do esquema de acoplamento}
@@ -48,16 +48,16 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \label{analise_corpos_livres}
     \end{center}
 
-    Como não há um padrão para distância entre os eixos e no centro de massa, medimos as distâncias da bicicleta que usamos nos desenhos em CAD. Com elas, utilizou-se conhecimentos básicos em estática para calcular a força resultante em cada roda. 
+    Como não há um padrão para distância entre os eixos e no centro de massa, medimos as distâncias da bicicleta que usamos nos desenhos em CAD. Com elas, utilizou-se conhecimentos básicos em estática para calcular a força resultante em cada roda.
 
     Utilizando como momento nulo o centro da roda traseira e considerando que toda a plataforma mais o usuário gerem uma força de 1000 N, temos que:
 
 \begin{equation}\label{eq290}
-	\sum F = 0 
+	\sum F = 0
 \end{equation}
 
  \begin{equation}\label{eq291}
-	F2 \cdot 1110,295 - 1000 \cdot 479,176 = 0 
+	F2 \cdot 1110,295 - 1000 \cdot 479,176 = 0
 \end{equation}
 
  \begin{equation}\label{eq292}
@@ -79,7 +79,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \captionof{figure}{Simulação estática estrutural – Tensão elástica equivalente}
         \label{sim_estatica_1}
     \end{center}
-    
+
      \begin{center}
     	\includegraphics[scale=0.7]{figuras/stress_1}
         \captionof{figure}{Stress equivalente com Tensão de escoamento da mesa superior}
@@ -106,7 +106,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \item A (figura \ref{fator_seguranca_1}) mostra o Fator de segurança da peça pelas condições de contorno, sendo esse fator igual a 15;
         \item A (figura \ref{vida_util_1}) mostra a vida útil da peça tendo como resultado uma peça com vida útil muito grande.
     \end{itemize}
-  
+
     Conclui-se que essas peças são validadas para usinagem pois suportam com segurança os esforços nela aplicado. É possível observar que é uma peça superdimensionada, mas como um dos objetivos do projeto é a segurança do usuário e o macaco suporta o peso este fato é descartado.
 
     Para a parte inferior da mesa foram feitas tais simulações:
@@ -122,25 +122,25 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \captionof{figure}{Módulos de vibração de ressonância da peça}
         \label{ressonancia_1}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/sim_estatica_2}
         \captionof{figure}{Simulação estática estrutural – Tensão elástica equivalente}
         \label{sim_estatica_2}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/stress_2}
         \captionof{figure}{Stress equivalente com Tensão de escoamento}
         \label{stress_2}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/fator_seguranca_2}
         \captionof{figure}{Fator de Segurança}
         \label{fator_seguranca_2}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/vida_util_2}
         \captionof{figure}{Vida útil}
@@ -163,9 +163,9 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
     \end{center}
 
     Os resultados apresentados também a validam para usinagem pois nas simulações são suportados todos os esforços exigidos e nenhum fator oferece risco algum ao usuário. Esta peça também é superdimensionada mas isso não oferece nenhuma perda ao projeto e o resultado final.
-    
+
     Para a versão final foram colocados suportes para uma cinta para fixar a roda dianteira da bicicleta, como mostrado na figura abaixo. Algumas outras alterações foram feitas que serão explicadas na parte de integração com outras áreas, a sessão \ref{secao.integracao}.
-    
+
     % foto real e atual da mesa giratória
 
 \subsection{Macaco de Elevação}
@@ -176,7 +176,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
     	\includegraphics[scale=0.5]{figuras/macaco_eletrico_1}
         \captionof{figure}{Macaco com motor elétrico}
         \label{macaco_eletrico_1}
-    \end{center}    
+    \end{center}
 
 \subsection{Integração Parte Dianteira}
   Para a fase final do projeto dessa parte, foram feitas as seguintes ações de integração da estrutura:
@@ -186,41 +186,41 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \item Parafusar o macaco na mesa giratória.
         \item Fazer uma estrutura de cinta para fixar a roda na mesa giratória.
     \end{itemize}
-    
+
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/Base_dianteira}
         \captionof{figure}{Base dianteira}
         \label{base.dianteira}
-    \end{center}  
+    \end{center}
 
 	Na Figura \ref{base.dianteira} é mostrado a estrutura feita para dar maior estabilidade em um sistema que tem subidas e descidas. Ainda foi aproveitado essa estrutura para atender ao requisito pedido pelos professores de criar uma resistência ao girar o guidão. A solução foi fazer alguns pontos para fixar algumas molas que serão fixadas na mesa giratória, aumentando conforme o giro no guidão.
-	
+
 	    \begin{center}
     	\includegraphics[scale=0.5]{figuras/Base_dianteira_macaco}
         \captionof{figure}{Base dianteira com o macaco integrado}
         \label{base.dianteira.macaco}
-    \end{center}  
-    
+    \end{center}
+
     A sequência apresentada na figura acima apresenta a integração entre a base e o macaco com parafusos. Há ainda visível uma estrutura soldada em cima do macaco para facilitar a integração com a mesa giratória, apresentada na imagem abaixo.
-    
-    \begin{center}
+
+    	    \begin{center}
     	\includegraphics[scale=0.5]{figuras/Base_dianteira_macaco_mesagiratoria}
         \captionof{figure}{Parte dianteria completa}
-        \label{base_giratoria}
-    \end{center}  
+        \label{base.dianteira.macaco.giratoria}
+    \end{center}
 
 	Assim é possível parafusar a mesa giratória no macaco, integrando os sistemas da parte frontal. Alguns detalhes particulares da integração com outras áreas serão apresentadas na sessão \ref{secao.integracao}. Abaixo vê-se a foto real da parte dianteira para comparação.
-	
+
 	% Foto real parte dianteira
 
 \section{Parte Traseira}
     A parte traseira da plataforma, na Figura \ref{parte_traseira_1} representada, garante a interação com a realidade aumentada através de sensores de velocidade, controle de peso na pedalada para simular subida e geração de energia. É adaptável a diferentes tamanhos de bicicleta.
- 
+
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/parte_traseira}
         \captionof{figure}{CAD da parte traseira}
         \label{parte_traseira_1}
-    \end{center}    
+    \end{center}
 
 	% Foto real da parte traseira
 
@@ -234,59 +234,59 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
     \begin{itemize}
         \item Duas peças que juntas se tornam um cavalete.
     \end{itemize}
-    
+
     \begin{center}
     	\includegraphics[scale=0.3]{figuras/esquema_traseira_1}
         \captionof{figure}{Esquema estrutura parte traseira}
         \label{esquema_traseira_1}
-    \end{center}    
+    \end{center}
 
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/parte_traseira_2}
         \captionof{figure}{Esquema estrutura completa de acoplamento parte traseira.}
         \label{parte_traseira_2}
-    \end{center}        
-   
+    \end{center}
+
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/acoplamento_est_1}
         \captionof{figure}{Acoplamento estrutural em uma bicicleta.}
         \label{acoplamento_est_1}
-    \end{center}      
-  
+    \end{center}
+
     Para calcular os esforços para as simulações, foram usados os cálculos apresentados na figura \ref{analise_corpos_livres} que analisaram os esforços em corpos livres. Para os casos abaixo foram utilizados uma força de 2200 N para aumentar o fator de segurança, a fim de levar em conta uma situação extrema de uso da estrutura. Ao fazer a decomposição dos vetores, essas forças foram distribuídas nos eixos X e Z (de acordo com o sistema de referência do ANSYS), conforme mostrado nas Figuras \ref{forcas_1} e \ref{forcas_2}.
 
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/forcas_1}
         \captionof{figure}{Aplicação das forças}
         \label{forcas_1}
-    \end{center}   
-    
+    \end{center}
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/forcas_2}
         \captionof{figure}{Aplicação das forças em escala aumentada}
         \label{forcas_2}
-    \end{center}  
- 
+    \end{center}
+
     Com as forças definidas foram feitas as simulações no cavalete pois ele é o componente estrutural e que sustenta a maior carga, sendo ela a junção do peso da bicicleta e do jogador e suas energias consequentes.
- 
+
     Para a parte traseira foram divididas em 2 partes:
     \begin{itemize}
         \item Simulações na peça sem rolo do cavalete – Peça 1.
         \item Simulações na peça com rolo do cavalete – Peça 2.
     \end{itemize}
- 
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/sim_estatica_3}
         \captionof{figure}{Simulação estática peça 1 – Tensão elástica equivalente}
         \label{sim_estatica_3}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/stress_3}
         \captionof{figure}{Stress equivalente com Tensão de escoamento da peça 1}
         \label{stress_3}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/deformacao_1}
         \captionof{figure}{Total deformação da peça 1}
@@ -298,7 +298,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \captionof{figure}{Fator de Segurança da peça 1}
         \label{fator_seguranca_3}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/vida_util_3}
         \captionof{figure}{Vida útil da peça 1}
@@ -309,8 +309,8 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
     	\includegraphics[scale=0.7]{figuras/vibracao_1}
         \captionof{figure}{Modos de vibração de ressonância da peça 1}
         \label{vibracao_1}
-    \end{center}    
- 
+    \end{center}
+
     Como pode ser observado, todos os testes validam a peça para fabricação:
     \begin{itemize}
         \item A figura \ref{sim_estatica_3} mostra a deformação elástica (em mm) que a peça 1 sofre com a carga aplicada, esta deformação é considerada nula;
@@ -320,24 +320,24 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \item A figura \ref{vida_util_3} mostra a vida útil da peça 1 tendo como resultado uma peça com vida útil muito grande.
         \item A figura \ref{vibracao_1} mostra os módulos de vibração da peça 1, vemos que os 6 primeiros modos de vibração são considerados nulos, para que a faça com que a estrutura entre em ressonância é necessário chegar ao sétimo modo de vibração de 229,46 Hz, sendo que para a aplicação desta estrutura tal frequência jamais será alcançada.
     \end{itemize}
-    
+
     A peças 1 suporta com segurança os esforços nela aplicado.
- 
+
     Para a peça 2 foram feitas tais simulações:
- 
+
 
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/sim_estatica_4}
         \captionof{figure}{Simulação estática peça 2 – Tensão elástica equivalente}
         \label{sim_estatica_4}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/stress_4}
         \captionof{figure}{Stress equivalente com Tensão de escoamento da peça 2}
         \label{stress_4}
     \end{center}
-  
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/deformacao_2}
         \captionof{figure}{Modal de corpo livre - deformação total da peça 2}
@@ -349,7 +349,7 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
         \captionof{figure}{Fator de Segurança da peça 2}
         \label{fator_seguranca_4}
     \end{center}
-    
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/vida_util_4}
         \captionof{figure}{Vida útil da peça 2}
@@ -360,10 +360,10 @@ A parte frontal da estrutura, mostrada na Figura \ref{partedafrente}, comporta a
     	\includegraphics[scale=0.7]{figuras/vibracao_2}
         \captionof{figure}{Modos de vibração de ressonância da peça 2}
         \label{vibracao_2}
-    \end{center}    
+    \end{center}
 
     Como pode ser observado, todos os testes também validam a peça para fabricação:
- 
+
     \begin{itemize}
         \item A figura \ref{sim_estatica_4} mostra a deformação elástica (em mm) que a peça 2 sofre com a carga aplicada, esta deformação é considerada nula;
         \item A figura \ref{stress_4} mostra a tensão de escoamento que a peça 2 alcança (141,39 MPa), sendo também muito inferior a tensão de escoamento do aço 1045 (310 Mpa);
@@ -378,19 +378,19 @@ A peça 2 também está válida para o uso.
 \subsection{Suporte do Rolo}
 
 Suporte do rolo (figura \ref{esq_suporte_rolo_1} e figura \ref{esq_suporte_rolo_2}), fica acoplado na estrutura traseira e suporta o rolo.
- 
+
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/esq_suporte_rolo_1}
         \captionof{figure}{Esquema estrutura parte traseira com suporte do rolo}
         \label{esq_suporte_rolo_1}
-    \end{center} 
- 
+    \end{center}
+
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/esq_suporte_rolo_2}
         \captionof{figure}{Esquema estrutura completa de acoplamento parte traseira.}
         \label{esq_suporte_rolo_2}
     \end{center}
- 
+
 Para calcular os esforços para as simulações, foram usados os cálculos apresentados na Figura \ref{analise_corpos_livres}.  Foi utilizado a força total aplicada na estrutura traseira nos dois suportes do rolo e dividida simultaneamente para a superfície de contado do rolamento em vermelho na Figura \ref{forcas_3}.
 
     \begin{center}
@@ -398,44 +398,44 @@ Para calcular os esforços para as simulações, foram usados os cálculos apres
         \captionof{figure}{Aplicação das forças no suporte.}
         \label{forcas_3}
     \end{center}
-    
+
 Com as forças definidas foram feitas as simulações no suporte.
     \begin{center}
     	\includegraphics[scale=0.5]{figuras/sim_estatica_5}
         \captionof{figure}{Simulação estática do suporte – Tensão elástica equivalente}
         \label{sim_estatica_5}
-    \end{center} 
-    
+    \end{center}
+
      \begin{center}
     	\includegraphics[scale=0.7]{figuras/stress_5}
         \captionof{figure}{Stress equivalente com Tensão de escoamento do suporte.}
         \label{stress_5}
-    \end{center} 
-    
+    \end{center}
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/deformacao_3}
         \captionof{figure}{Total deformação do suporte.}
         \label{deformacao_3}
-    \end{center} 
-    
+    \end{center}
+
      \begin{center}
     	\includegraphics[scale=0.7]{figuras/fator_seguranca_5}
         \captionof{figure}{Fator de segurança do suporte.}
         \label{fator_seguranca_5}
-    \end{center} 
-    
+    \end{center}
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/vida_util_5}
         \captionof{figure}{Vida útil do suporte.}
         \label{vida_util_5}
-    \end{center} 
-    
+    \end{center}
+
     \begin{center}
     	\includegraphics[scale=0.7]{figuras/vibracao_3}
         \captionof{figure}{Modos de vibração de ressonância do suporte.}
         \label{vibracao_3}
-    \end{center} 
- 
+    \end{center}
+
 Como pode ser observado, todos os testes validam a peça para o uso:
 \begin{itemize}
     \item A figura \ref{sim_estatica_5} mostra a deformação elástica (em mm) que o suporte sofre com a carga aplicada, esta deformação é considerada nula;
@@ -461,7 +461,7 @@ O Suporte de rolo é valido com segurança para os esforços nela aplicado.
     	\includegraphics[scale=0.5]{figuras/freio_moto}
         \captionof{figure}{Freio a disco de moto.}
         \label{freio_moto}
-    \end{center} 
+    \end{center}
 
     A terceira solução foi utilizar um espécie de pêndulo com uma mola que seria puxado para encostar na parte não utilizada da coroa para causar certo atrito e aumentar a carga assim. Essa solução acabou sendo substituída devido a incerteza e insegurança quanto a funcionalidade e projetação dessa alternativa.
 
@@ -469,7 +469,7 @@ O Suporte de rolo é valido com segurança para os esforços nela aplicado.
     	\includegraphics[scale=0.4]{figuras/freio_pendulo}
         \captionof{figure}{Freio com pêndulo}
         \label{freio_pendulo}
-    \end{center} 
+    \end{center}
 
     A quarta solução foi utilizar um freio a disco de bicicleta preso no eixo do rolo. Essa solução se demonstrou ser a mais profissional, por já ser bem usada no mercado, de fácil acesso e projetação mais direta. Foram feitas várias alternativas para essa solução, mas a final está representada abaixo.
 
@@ -477,77 +477,77 @@ O Suporte de rolo é valido com segurança para os esforços nela aplicado.
     	\includegraphics[scale=0.5]{figuras/carga_peso}
         \captionof{figure}{Sistema de carga de peso na simulação. Em amarelo, o disco de freio, em rosa, a pinça para frear, em vermelho o suporte do motor de passos e em azul o suporte do rolo.}
         \label{carga_peso}
-    \end{center} 
-    
+    \end{center}
+
     % Figura real do sistema de freio.
 
     Esta alternativa foi encontrada depois de utilização de vários iterações de simulações estruturais e CADs. Algumas coisas percebidas foram o tamanho adequado do tubo azul a ser soldado, que é ao mesmo tempo mais fácil de se fabricar quanto mais confiável no caso. As simulações de versões anteriores assim como as já apresentadas neste relatório (Figuras \ref{sim_estatica_5} até \ref{vibracao_3}) garantem que a estrutura aguentará os esforços.
 
 \subsection{Alternador}
- 
+
     Como apresentado no relatório do sistema de alimentação, o alternador não funcionou como esperado e projetado, consumindo energia ao invés de gerar. Assim, o projeto da Figura \ref{alternador} foi substituído pela utilização de um dínamo. Mais informações se encontram na sessão de energia.
 
     \begin{center}
     	\includegraphics[scale=0.3]{figuras/alternador}
         \captionof{figure}{CAD do alternador com a correia acoplada na coroa}
         \label{alternador}
-    \end{center} 
-    
+    \end{center}
+
   \section{Integração entre áreas} \label{secao.integracao}
-	
-	Outra tarefa importante da equipe de estruturas foi preparar o suporte físico para sensores e motores. Para esta fase final foram concluídas tais peças, o que permitiu a integração e calibração de todo o sistema com demais sistemas.   
-  
+
+	Outra tarefa importante da equipe de estruturas foi preparar o suporte físico para sensores e motores. Para esta fase final foram concluídas tais peças, o que permitiu a integração e calibração de todo o sistema com demais sistemas.
+
   \subsection{Suporte para medidor de velocidade}
-  
+
   O jogo precisará saber o quão veloz esta pedalando o usuário. Isso será medido por um sensor de proximidade que mede a frequência de giro da roda. Seguindo o princípio de deixar a maior parte dos sensores no rolo, escolhemos um local de fácil montagem do sensor e fácil fabricação, o que é mostrado claramente pela figura \ref{est.sensor.prox}.
-  
+
       \begin{center}
     	\includegraphics[scale=0.5]{figuras/est_sensor_prox}
         \captionof{figure}{CAD da estrutura feita para encaixar o sensor de proximidade}
         \label{est.sensor.prox}
-    \end{center} 
-    
+    \end{center}
+
     % Foto real do suporte do sensor de proximidade
-    
+
     Para a identificação de uma volta, foi colocado no rolo uma fita de cor diferente. Assim a cada volta o sensor identificará e o jogo saberá o quão rápido esta o usuário.
-  
+
   \subsection{Identificação da angulação do guidão}
-  
+
   Na parte dianteira foi feita outra adaptação na estrutura voltada para a integração com outras áreas: a mesa giratória. Por meio de um potenciômetro nela o jogo saberá qual a angulação o usuário esta aplicando no guidão.
-  
+
        \begin{center}
     	\includegraphics[scale=0.5]{figuras/est_potenciometro1}
         \captionof{figure}{CAD da mesa giratória com potenciômetro}
         \label{est.potenciometro.1}
-    \end{center} 
-    
+    \end{center}
+
     % Foto real da mesa giratória e do potenciômetro
-  
+
   Para garantir que o potenciômetro gire juntamente com a mesa, foi feito um encaixe na mesa superior. Ainda foi feito um rasgo na mesa inferior para que se pudesse passar os fios para conectar nos computadores embarcados. Outro limitante considerado foi a angulação máxima do sensor, cerca de 270$^\circ$; foram colocados anteparos para bloquear a mesa de quebrar o equipamento. Para melhor visualização dessas características abaixo se encontra uma visão explodida da mesa giratória.
-  
+
        \begin{center}
     	\includegraphics[scale=0.5]{figuras/est_potenciometro2}
         \captionof{figure}{CAD explodido da mesa giratória com potenciômetro}
         \label{est_potenciometro2}
-    \end{center} 
-    
+    \end{center}
+
       \subsection{Controle de peso de pedalada}
 
   Um dos grandes desafios da parte estrutural e que foi focado desde o início, foi a preparação de um sistema que permitisse adicionar carga a pedalada para simular subidas conforme é possível se ver na sessão \ref{freio.controlado}.
   Garantir que isso fosse controlado pelo rolo era uma das prioridades, pois facilitaria a montagem da bicicleta. Com isso em mente e em constante consulta com equipe de eletrônica para entendermos todos os aspectos desse problema foi possível atingir o resultado obtido, na figura \ref{freio.completo}.
-  
+
       \begin{center}
     	\includegraphics[scale=0.5]{figuras/Freiocompleto}
         \captionof{figure}{CAD do sistema de freio para simulação de elevação}
         \label{freio.completo}
-    \end{center} 
-    
+    \end{center}
+
     % foto real do sistema de freio
 
 	Foi feito um suporte para o motor, em vermelho, e um suporte, em salmão, para enrolar melhor o fio conectado na pinça no rolo.  O fio utilizado foi de freio de bicicleta, o que garante a confiabilidade. Ainda foi soldado outra peça na parte azul para fixar a pinça. Abaixo ela é mostrada com um azul mais claro.
-	
+
 	      \begin{center}
     	\includegraphics[scale=0.5]{figuras/est_fixar_pinca}
         \captionof{figure}{CAD da peça de fixação da pinça}
         \label{est.fixar.pinca}
-    \end{center} 
+    \end{center}
