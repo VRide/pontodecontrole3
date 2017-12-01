@@ -133,7 +133,9 @@ As imagens abaixo contém os elementos principais que compõem o cenário do jog
 
 \subsection{Modelo de Domínio}
 
-O modelo de domínio representado nas (Figuras \ref{figura:menu_domain} e \ref{figura:main_domain}) faz referência aos dois módulos principais do desenvolvimento do jogo. O menu sendo representado por todos os componentes que interagem com o usuário para que ele escolha o modo de jogo e pelos componentes que armazenam informações do usuário. E o \textit{Simple Track Run} que engloba os componentes utilizados na construção do percurso que o usuário irá fazer ao jogar, como os cenários, personagens, torcida.
+O modelo de domínio representado nas (Figuras \ref{figura:menu_domain}, \ref{figura:main_domain} e \ref{figura:statistics}) faz referência aos três módulos principais do desenvolvimento do jogo. Cada uns dos modelos abaixo representam as cenas criadas, Menu, \textit{Track} e \textit{Statistics}. 
+
+O Menu sendo representado por todos os componentes que interagem com o usuário para que ele escolha o modo de jogo e pelos componentes que armazenam informações do usuário. Os painéis do menu: \textit{Player Height, Start, Player Name, Choose Gender, Choose Lap, Player Weight, Choose Mode, Choose Account} fazem parte do \textit{Canvas} que é a base que agrega todos os painéis do menu. O cursor é o elemento que se move a partir dos movimentos da cabeça com o oculus e que seleciona as opções do menu. O \textit{terrain}, como o próprio nome diz, é o terreno da cena do Menu. 
 
 \begin{center}
 	\includegraphics[scale=0.5]{figuras/menu_domain}
@@ -141,11 +143,16 @@ O modelo de domínio representado nas (Figuras \ref{figura:menu_domain} e \ref{f
 	\label{figura:menu_domain}
 \end{center}
 
+O \textit{Track} engloba os componentes utilizados na construção do percurso que o usuário irá fazer ao jogar, como os cenários, personagens, torcida, cerca. Este modelo faz referência as duas modalidades de jogo, tanto o Modo Livre quanto o Modo Corrida.  
+
 \begin{center}
 	\includegraphics[scale=0.5]{figuras/main_domain}
-	\captionof{figure}{Modelo de Domínio - \textit{Simple Track Run}.}
+	\captionof{figure}{Modelo de Domínio - \textit{Track}.}
 	\label{figura:main_domain}
 \end{center}
+
+
+Em \textit{Statistics} estão os componentes das cenas de gráficos. \textit{VelocityCanvas}, \textit{HeartCanvas}, \textit{ElectrodermalCanvas}, \textit{ResumeCanvas} representam os gráficos gerados pelo jogo e os seus componentes principais.
 
 
 \begin{center}
@@ -222,6 +229,7 @@ Como a integração com o sistema físico ainda não foi realizada, é implement
 \end{center}
 
 \subsection{Banco de Dados}
+
 Para o armazenamento das informações relativas a conta de um usuário foi adotado a utilização de um banco de dados. Tais informações incluem tanto os dados pessoais como, nome, altura e peso, quanto os dados relativos ao desenvolver do usuário, como o tempo das voltas, batimentos cardíacos durante a corrida, frequência respiratória e velocidade no circuito, entre outros, que poderão vir a ser adicionados para melhorar a funcionalidade de estatísticas.
 
 O banco de dados escolhido foi o \textit{iBoxBD} (\url{http://www.iboxdb.com/}), uma banco de bados totalmente não relacional, que é leve e usa pouca memória. Ele é executado como um servidor incorporado como banco de dados local, também suporta conexão TCP como parte do sistema distribuído. Outras vantagens são: único arquivo, ausência da necessidade de configuração e suporte ao C\#.
@@ -252,7 +260,7 @@ Os indicadores propostos tem como base um artigo sobre o \textit{kalibro} \cite{
 \hline
 \textbf{Métrica}                                                                                                                         & \textbf{Código} & \textbf{Descrição}                                                                                                                                                                                                                                                & \textbf{Indicadores}                                                                                  \\ \hline
 \begin{tabular}[c]{@{}c@{}}\textit{Average Cyclomatic} \\ \textit{Complexity per Method} \\ (Média de complexidade \\ ciclomática por método)\end{tabular} & accm            & \begin{tabular}[c]{@{}c@{}}Complexidade ciclomática nada\\  mais é do que o número de \\ caminhos independentes que um \\ software pode seguir \\ em sua execução, \\ calculado a partir da\\  representação em grafo \\ das estruturas de controle.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 5{[}\\ Regular {[}5, 7{[}\\ Ruim {[}7, INF{[}\end{tabular}       \\ \hline
-\begin{tabular}[c]{@{}c@{}}\textit{Average Method} \\ \textit{Lines of Code} \\ (Média de linhas de \\ código por método)\end{tabular}                     & amloc           & \begin{tabular}[c]{@{}c@{}}AMLOC representa a média\\  do número de linhas dos\\  métodos de uma classe.\end{tabular}                                                                                                                                             & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 10{[}\\ Regular {[}10, 13\\ {[}Ruim {[}13, INF{[}\end{tabular}   \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textit{Average Method} \\ \textit{Lines of Code} \\ (Média de linhas de \\ código por método)\end{tabular}                     & amloc           & \begin{tabular}[c]{@{}c@{}}AMLOC representa a média\\  do número de linhas dos\\  métodos de uma classe.\end{tabular}                                                                                                                                             & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 10{[}\\ Regular {[}10, 13{[}\\ Ruim {[}13, INF{[}\end{tabular}   \\ \hline
 \begin{tabular}[c]{@{}c@{}}\textit{Lack of Cohesion} \\ \textit{of Methods}\\ (Ausência de coesão \\ em métodos)\end{tabular}                              & lcom4           & \begin{tabular}[c]{@{}c@{}}LCOM4 representa a coesão \\ entre os métodos da classe.\\  Ela verifica a relação entre os\\  métodos e atributos de uma \\ mesma classe.\end{tabular}                                                                                & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 2{[}\\ Regular {[}2, 5{[}\\ Ruim {[}5, INF{[}\end{tabular}       \\ \hline
 \begin{tabular}[c]{@{}c@{}}\textit{Lines of Code}\\ (Linhas de código\\  por classe)\end{tabular}                                                 & loc             & \begin{tabular}[c]{@{}c@{}}LOC indica o número de linhas\\  executáveis de uma classe, \\ desconsiderando linhas \\ em branco e comentários.\end{tabular}                                                                                                         & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 70{[}\\ Regular {[}70, 130{[}\\ Ruim {[}130, INF{[}\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}c@{}}\textit{Number of Methods}\\ (Número de métodos)\end{tabular}                                                          & nom             & \begin{tabular}[c]{@{}c@{}}NOM é uma métrica de \\ tamanho que conta o \\ número de métodos \\ de uma classe.\end{tabular}                                                                                                                                        & \begin{tabular}[c]{@{}c@{}}Bom {[}0, 10{[}\\ Regular {[}10, 40{[}\\ Ruim {[}40, INF{[}\end{tabular}   \\ \hline
@@ -269,7 +277,7 @@ A partir das métricas escolhidas foi realizado a coleta dos dados e análise co
 \hline
 Script & ACCM & AMLOC & LCOM4 & LOC & NOM \\
 \hline
-CameraMovementScript.cs & 4.25\cellcolor[HTML]{9AFF99} & 23.375\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 187\cellcolor[HTML]{FFCE93} & 0\cellcolor[HTML]{9AFF99} \\
+PlayerScript.cs & 4.25\cellcolor[HTML]{9AFF99} & 23.375\cellcolor[HTML]{FFCE93} & 2\cellcolor[HTML]{FFFC9E} & 187\cellcolor[HTML]{FFCE93} & 0\cellcolor[HTML]{9AFF99} \\
 CheeringScript.cs & 2.5\cellcolor[HTML]{9AFF99} & 8.5\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 17\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
 FenceAudioScript.cs & 1\cellcolor[HTML]{9AFF99} & 4.5\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 9\cellcolor[HTML]{9AFF99} & 2\cellcolor[HTML]{9AFF99} \\
 GrassAudioScript.cs & 1.2857\cellcolor[HTML]{9AFF99} & 4.2857\cellcolor[HTML]{9AFF99} & 1\cellcolor[HTML]{9AFF99} & 30\cellcolor[HTML]{9AFF99} & 7\cellcolor[HTML]{9AFF99} \\
