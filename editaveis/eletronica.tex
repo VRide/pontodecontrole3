@@ -308,6 +308,7 @@ Resitência FSR = 175000 + 125000 \cdot \sin (2 \cdot \pi \cdot 2 \cdot t) \spac
 
 \subsection{Dados fisiológicos e Interface Gráfica}
 
+<<<<<<< HEAD
 \subsection{Dados da bicicleta e Estrutura Traseira}
 
 \subsection{Sistema de elevação e Estrutura Dianteira}
@@ -322,6 +323,15 @@ Além disso, na parte frontal, possui um resistor de variação angular (potenci
 
 Desta vez, a Raspberry escrevia no broker uma mensagem no tópico bike$\backslash$angle para que o jogo pudesse ler essa variável e realizar a mudança no ângulo da bicicleta no jogo. 
 
+=======
+\subsection{Dados da bicicleta e Estrutura traseira
+	A integração da parte traseira da estrutura com a eletrônica foi dividida em duas partes, uma referente ao sensor de RPM e outra para o controle do freio utilizando o motor de passo e o disco de frenagem.}
+	\subsubsection{Motor de passo e Disco de freio}
+
+		O controle do motor de passo para determinar a quantidade de passos necessários para a tração exercida pelo disco de freio foi realizado  de acordo com a dificuldade encontrada no ambiente virtual. No códgio foi implementado o protocolo de comunicação IoT MQTT, usado em todo o projeto, para receber os dados referentes à dificuldade pré-definida no ambiente virtual, de acordo com os gráficos realizados para o jogo ficaram definidos 6 níveis de dificuldade para pedalar diferentes, sendo eles de acordo com o tipo e inclinação da pista, o tipo da pista podendo variar entre gramado ou asfalto e a inclinação sendo para baixo, para cima ou sem inclinação. Com esses  valores sendo recebidos pelo protocolo MQTT diretamente do jogo, foram feitos os cálculos para variar a quantidade de passos para o motor realizar. Para isso, foi introduzida um variável responsavél apenas por guardar o valor do estado que foi enviado, para sempre manter uma verificação se houve ou não mudança no ambiente virtual, para evitar que o freio seja acionado desnecessáriamente, por outro lado, caso ocorra uma mudança de estado no jogo, é chamada uma função que realiza o calculo de quantos passos o motor ṕrecisa realizar para apertar mais ou para liberar, que depende da comparação feita com o estado guardado pela variável e com o novo valor recebido do protocolo, caso o nível de dificuldade aumente, entao função realiza o cálculo para o motor girar em um sentido que aperte o freio, e caso contrario, a função realiza o cálculo para o motor girar no sentido oposto, para diminuir a dificuldade de pedalada do usuário.
+ 
+\subsection{Sistema de elevação  e Estrutura dianteira}
+>>>>>>> e4698f4d39b4aa6ad464343f89b6fdf33cfc76d4
 
  
 
