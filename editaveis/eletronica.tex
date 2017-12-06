@@ -306,11 +306,22 @@ Resitência FSR = 175000 + 125000 \cdot \sin (2 \cdot \pi \cdot 2 \cdot t) \spac
 \section{Integração entre as áreas}
 	Após finalizado todos os módulos separadamente e ter verificado se todos os valores estavam de acordo e em perfeita operação, foi inicado o  processo de integração com todas as outras áreas para finalizar todos os testes e calibração com o produto completo.
 
-\subsection{Dados fisiológicos e interface gráfica}
+\subsection{Dados fisiológicos e Interface Gráfica}
 
-\subsection{Dados da bicicleta e Estrutura traseira}
+\subsection{Dados da bicicleta e Estrutura Traseira}
 
-\subsection{Sistema de elevação  e Estrutura dianteira}
+\subsection{Sistema de elevação e Estrutura Dianteira}
+
+Como apresentado anteriormente, foi utilizado um macaco elétrico para controle de elevação da parte dianteira da bicicleta. O sistema de elevação foi configurado para funcionar de acordo com os comandos enviados ao broker no tópico bike$\backslash$elevation por meio do jogo. Ou seja, o jogo enviava os valores -1,0 e 1 para que o motor começasse a funcionar.
+
+Foi desenvolvida uma placa de controle, com as entradas GPIO da Raspberry para controle e saídas de relés para a ativação do motor elétrico do macaco. Desta forma, ao receber o dado -1 pelo protocolo MQTT, vindo do Broker, o Raspberry enviava um comando para que o macaco elétrico, realizasse o movimento de descida, ao receber o dado 0, ele parava o motor e caso o dado fosse 1, o motor iniciava a subida. 
+
+O jogo era capaz de inscrever no broker essa mensagem e a integração funcionou conforme o esperado. Alguns problemas com a lógica do código foram enfrentados durante o desenvolvimento, contudo, não prejudicou o cronograma da equipe e a elevação funcionou conforme o esperado.
+
+Além disso, na parte frontal, possui um resistor de variação angular (potenciômetro), que transfomava essa variação angular em uma variação de tensão, lida pelo conversor analógico digital e interpretada pelo Raspberry. Esse valor era utilizado para capturar a variação de ângulo do guidão da bicicleta. As variações de tensão no potenciômetro levavam a um mal comportamento do jogo, o que ocasionou um certo desconforto nas primeiras vezes que a plataforma foi utilizada, contudo, realizando uma média entre os valores obtidos, pode-se diminuir este efeito, de forma a funcionar de maneira correta posteriormente.
+
+Desta vez, a Raspberry escrevia no broker uma mensagem no tópico bike$\backslash$angle para que o jogo pudesse ler essa variável e realizar a mudança no ângulo da bicicleta no jogo. 
+
 
  
 
