@@ -300,22 +300,6 @@ A saída do dínamo é em formas de pulsos, ou seja demanda retificação para c
 
 A primeira parte da retificação ocorre por meio de uma ponte de diodos em H, os diodos inicialmente usados para teste foram o 1N4004, para a filtragem é utilizado um capacitor de 4700uF que será responsável por diminuir esta pulsação, porém como visto na imagem acima a onda ainda não é completamente linear, então ocorre a estabilização através de um diodo Zenner que ainda terá a função de evitar correntes reversas que poderiam a vir da bateria para os dínamos. 
 
-\section{Driver dos Motores}
-
-O projeto conta com 2 motores, um é responsável pela elevação vertical e o outro pela frenagem que imprime no usuário as sensações de dificuldade da pedalada, ambos os motores demandam de um sistema de driver para  converter um sinal de comando em um sinal de potência. 
-
-O driver foi elaborado tomando como base o driver L298, que é uma dupla ponte H, este arranjo consiste na ligação de 4 transistores, a principal implicação prática disto é que este tipo de este driver ligação torna possível controlar 2 motores simultaneamente tanto quanto ao sentido como quanto a velocidade. Existem outros drivers que possuem o mesmo tipo de arranjo com as mesmas implicações, assim sendo a escolha do L298 se deu com base nos demais parâmetros do mesmo, tais como da  potência máxima fornecida, a tensão e corrente máximas suportadas e a tensão lógica. 
-
-Neste caso em específico o driver não será utilizado para acionar 2 motores, mas apenas 1 motor de passo com 2 bobinas. A fonte de alimentação linear é realizada através do LM350, que por sua vez possui acoplado um potenciômetro que irá atuar no sentido de regular a tensão de saída deste dispositivo. 
-Além destes dispositivos também foram adicionados ao circuito diodos com o objetivo de fazer a proteção do circuito e evitar corrente reversas, além de capacitores que servem como filtros. 
-A simulação deste driver citado foi realizada no software Proteus, onde foi gerado o layout que posteriormente foi confeccionado em uma placa de circuito impresso. 
-
-\begin{center}
-    \includegraphics[scale=0.5]{figuras/driver3d}
-       \captionof{figure}{Driver Motores de Passo.}
-       \label{driver3d}
-  \end{center}  
-
 \section{Confecção das Placas de Circuito Impresso}
 
 Os Circuitos Impressos são estruturas onde se fixam componentes eletrônicos, isto ocorre em uma placa de material isolante, este material está sempre na fórmula de lâmina e pode ser feito a partir de diferentes materiais, tais como fenolite, fibra de vidro, materiais cerâmicos em geral  e compósitos que são fabricados a fibra de vidro e a resina fenólica %[7].
