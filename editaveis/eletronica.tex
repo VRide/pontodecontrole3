@@ -308,7 +308,6 @@ Resitência FSR = 175000 + 125000 \cdot \sin (2 \cdot \pi \cdot 2 \cdot t) \spac
 
 \subsection{Dados fisiológicos e Interface Gráfica}
 
-<<<<<<< HEAD
 	A integração entre os sensores fisiológicos para o usuário com a interface gráfica foi toda realizada através do protocólo de comunicação MQTT, onde todos os sensores foram integrados com o módulo WiFi" ESP 8266-12E e já introduzidos com a biblioteca necessária para enviar os valores para o broker do projeto. Cada sensor foi designado para um tópico diferente, para poder organizar mais facilmente no software do jogo. Essa organização é feita de maneira simples, apenas modificando o nome do tópico utilizado no código do processamento de cada sensor. Para monitorar se os valores estavam sendo enviados corretamente, foi utilizado o aplicativo MQTTlens. 
 
 \subsection{Dados da bicicleta e Estrutura traseira}
@@ -318,12 +317,9 @@ Resitência FSR = 175000 + 125000 \cdot \sin (2 \cdot \pi \cdot 2 \cdot t) \spac
 		O controle do motor de passo para determinar a quantidade de passos necessários para a tração exercida pelo disco de freio foi realizado  de acordo com a dificuldade encontrada no ambiente virtual. No códgio foi implementado o protocolo de comunicação IoT MQTT, usado em todo o projeto, para receber os dados referentes à dificuldade pré-definida no ambiente virtual, de acordo com os gráficos realizados para o jogo ficaram definidos 6 níveis de dificuldade para pedalar diferentes, sendo eles de acordo com o tipo e inclinação da pista, o tipo da pista podendo variar entre gramado ou asfalto e a inclinação sendo para baixo, para cima ou sem inclinação. Com esses  valores sendo recebidos pelo protocolo MQTT diretamente do jogo, foram feitos os cálculos para variar a quantidade de passos para o motor realizar. Para isso, foi introduzida um variável responsavél apenas por guardar o valor do estado que foi enviado, para sempre manter uma verificação se houve ou não mudança no ambiente virtual, para evitar que o freio seja acionado desnecessáriamente, por outro lado, caso ocorra uma mudança de estado no jogo, é chamada uma função que realiza o calculo de quantos passos o motor ṕrecisa realizar para apertar mais ou para liberar, que depende da comparação feita com o estado guardado pela variável e com o novo valor recebido do protocolo, caso o nível de dificuldade aumente, entao função realiza o cálculo para o motor girar em um sentido que aperte o freio, e caso contrario, a função realiza o cálculo para o motor girar no sentido oposto, para diminuir a dificuldade de pedalada do usuário.
 		Após integrar o motor de passo com o disco utilizado para a frenagem juntamente com o jogo pelo protocolo de comunicação, foram realizados os testes de calibração, para evitar que o motor de passo tracione exageradamente, mas que também não deixe sempre livre. Como não foi utilizado nenhum método para detectar a posição inicial do motor, foram feitos testes de tentativa e erro para determinar um valor que tracione de um modo que apenas dificulte sem parar totalmente o rolo da estrutura, já que o código é executado rapidamente e a por ser uma estrutura estática, qualquer contato um pouco mais forte ja causa uma tração suficiente para parar totalmente o movimento, com isso não foram necessários muitos testes para calibrar corretamente.
 	 
-\subsection{Sistema de elevação  e Estrutura dianteira}
-=======
 \subsection{Dados da bicicleta e Estrutura Traseira}
 
 \subsection{Sistema de elevação e Estrutura Dianteira}
->>>>>>> 65a30e635a7f923b9054f21d162379b819ee60f7
 
 Como apresentado anteriormente, foi utilizado um macaco elétrico para controle de elevação da parte dianteira da bicicleta. O sistema de elevação foi configurado para funcionar de acordo com os comandos enviados ao broker no tópico bike$\backslash$elevation por meio do jogo. Ou seja, o jogo enviava os valores -1,0 e 1 para que o motor começasse a funcionar.
 
@@ -336,7 +332,8 @@ Além disso, na parte frontal, possui um resistor de variação angular (potenci
 Desta vez, a Raspberry escrevia no broker uma mensagem no tópico bike$\backslash$angle para que o jogo pudesse ler essa variável e realizar a mudança no ângulo da bicicleta no jogo. 
 
 \subsection{Dados da bicicleta e Estrutura traseira}
-	A integração da parte traseira da estrutura com a eletrônica foi dividida em duas partes, uma referente ao sensor de RPM e outra para o controle do freio utilizando o motor de passo e o disco de frenagem.
+   A integração da parte traseira da estrutura com a eletrônica foi dividida em duas partes, uma referente ao sensor de RPM e outra para o controle do freio utilizando o motor de passo e o disco de frenagem.
+
     \subsubsection{Driver dos Motores}
 
     O projeto conta com 2 motores, um é responsável pela elevação vertical e o outro pela frenagem que imprime no usuário as sensações de dificuldade da pedalada, ambos os motores demandam de um sistema de driver para  converter um sinal de comando em um sinal de potência. 
@@ -354,15 +351,6 @@ Desta vez, a Raspberry escrevia no broker uma mensagem no tópico bike$\backslas
           \end{center}  
     \subsubsection{Motor de passo e Disco de freio}
 
-		O controle do motor de passo para determinar a quantidade de passos necessários para a tração exercida pelo disco de freio foi realizado  de acordo com a dificuldade encontrada no ambiente virtual. No códgio foi implementado o protocolo de comunicação IoT MQTT, usado em todo o projeto, para receber os dados referentes à dificuldade pré-definida no ambiente virtual, de acordo com os gráficos realizados para o jogo ficaram definidos 6 níveis de dificuldade para pedalar diferentes, sendo eles de acordo com o tipo e inclinação da pista, o tipo da pista podendo variar entre gramado ou asfalto e a inclinação sendo para baixo, para cima ou sem inclinação. Com esses  valores sendo recebidos pelo protocolo MQTT diretamente do jogo, foram feitos os cálculos para variar a quantidade de passos para o motor realizar. Para isso, foi introduzida um variável responsavél apenas por guardar o valor do estado que foi enviado, para sempre manter uma verificação se houve ou não mudança no ambiente virtual, para evitar que o freio seja acionado desnecessáriamente, por outro lado, caso ocorra uma mudança de estado no jogo, é chamada uma função que realiza o calculo de quantos passos o motor precisa realizar para apertar mais ou para liberar, que depende da comparação feita com o estado guardado pela variável e com o novo valor recebido do protocolo, caso o nível de dificuldade aumente, entao função realiza o cálculo para o motor girar em um sentido que aperte o freio, e caso contrario, a função realiza o cálculo para o motor girar no sentido oposto, para diminuir a dificuldade de pedalada do usuário.
- 
+	O controle do motor de passo para determinar a quantidade de passos necessários para a tração exercida pelo disco de freio foi realizado  de acordo com a dificuldade encontrada no ambiente virtual. No códgio foi implementado o protocolo de comunicação IoT MQTT, usado em todo o projeto, para receber os dados referentes à dificuldade pré-definida no ambiente virtual, de acordo com os gráficos realizados para o jogo ficaram definidos 6 níveis de dificuldade para pedalar diferentes, sendo eles de acordo com o tipo e inclinação da pista, o tipo da pista podendo variar entre gramado ou asfalto e a inclinação sendo para baixo, para cima ou sem inclinação. Com esses  valores sendo recebidos pelo protocolo MQTT diretamente do jogo, foram feitos os cálculos para variar a quantidade de passos para o motor realizar. Para isso, foi introduzida um variável responsavél apenas por guardar o valor do estado que foi enviado, para sempre manter uma verificação se houve ou não mudança no ambiente virtual, para evitar que o freio seja acionado desnecessáriamente, por outro lado, caso ocorra uma mudança de estado no jogo, é chamada uma função que realiza o calculo de quantos passos o motor precisa realizar para apertar mais ou para liberar, que depende da comparação feita com o estado guardado pela variável e com o novo valor recebido do protocolo, caso o nível de dificuldade aumente, entao função realiza o cálculo para o motor girar em um sentido que aperte o freio, e caso contrario, a função realiza o cálculo para o motor girar no sentido oposto, para diminuir a dificuldade de pedalada do usuário.
 
 
-
-%[1] ROSERO, Oscar F. G. Sistema móvel de monitoramento e treinamento para ciclista com smartphone android. Departamento de Engenharia Elétrica, Faculdade de Tecnologia – Universidade de Brasília. FEV, 2012.
-
-
-%[2] MIRANDA, Mateus R. Desenvolvimento de uma bancada para simulação veicular integrando realidade virtual e medição de dados fisiológicos. Departamento de Engenharia Mecânica, Faculdade de Tecnologia – Universidade de Brasília. DEZ, 2014.
-
-%[3] FORCE Sensing Resistor Integration Guide and Evaluation Parts Catalog. Camarillo: Interlink Electronics. 25p.
-%[4] SINAIS vitais. Paraná: SIATE – Serviço Integrado de Atendimento ao Trauma em Emergência. 2015. 26p.
