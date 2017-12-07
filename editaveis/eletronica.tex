@@ -315,9 +315,29 @@ Resitência FSR = 175000 + 125000 \cdot \sin (2 \cdot \pi \cdot 2 \cdot t) \spac
 	\subsubsection{Motor de passo e Disco de freio}
 
 		O controle do motor de passo para determinar a quantidade de passos necessários para a tração exercida pelo disco de freio foi realizado  de acordo com a dificuldade encontrada no ambiente virtual. No códgio foi implementado o protocolo de comunicação IoT MQTT, usado em todo o projeto, para receber os dados referentes à dificuldade pré-definida no ambiente virtual, de acordo com os gráficos realizados para o jogo ficaram definidos 6 níveis de dificuldade para pedalar diferentes, sendo eles de acordo com o tipo e inclinação da pista, o tipo da pista podendo variar entre gramado ou asfalto e a inclinação sendo para baixo, para cima ou sem inclinação. Com esses  valores sendo recebidos pelo protocolo MQTT diretamente do jogo, foram feitos os cálculos para variar a quantidade de passos para o motor realizar. Para isso, foi introduzida um variável responsavél apenas por guardar o valor do estado que foi enviado, para sempre manter uma verificação se houve ou não mudança no ambiente virtual, para evitar que o freio seja acionado desnecessáriamente, por outro lado, caso ocorra uma mudança de estado no jogo, é chamada uma função que realiza o calculo de quantos passos o motor ṕrecisa realizar para apertar mais ou para liberar, que depende da comparação feita com o estado guardado pela variável e com o novo valor recebido do protocolo, caso o nível de dificuldade aumente, entao função realiza o cálculo para o motor girar em um sentido que aperte o freio, e caso contrario, a função realiza o cálculo para o motor girar no sentido oposto, para diminuir a dificuldade de pedalada do usuário.
+
+
 		Após integrar o motor de passo com o disco utilizado para a frenagem juntamente com o jogo pelo protocolo de comunicação, foram realizados os testes de calibração, para evitar que o motor de passo tracione exageradamente, mas que também não deixe sempre livre. Como não foi utilizado nenhum método para detectar a posição inicial do motor, foram feitos testes de tentativa e erro para determinar um valor que tracione de um modo que apenas dificulte sem parar totalmente o rolo da estrutura, já que o código é executado rapidamente e a por ser uma estrutura estática, qualquer contato um pouco mais forte ja causa uma tração suficiente para parar totalmente o movimento, com isso não foram necessários muitos testes para calibrar corretamente.
 	 
 \subsection{Dados da bicicleta e Estrutura Traseira}
+
+\subsubsection{Cálculo do RPM e integração com a com a estrutura}
+
+	Sempre que o sensor detecta um objeto interferente há uma borda de descida, para isso o código em python foi configurado para detectar bordas descida. A cada borda de descida o programa faz uma contagem, a cada 'X' contagens o programa chama a função de cálculo de RPM, onde X é um parâmetro de calibração que pode ser setado por quem esta configurando, nos testes foi usado 'X' = 5. O cálculo é dado por :
+    
+    \begin{equation}\label{eq12}
+        rpm = (\frac{Contagem}{tempo_ultima_contagem - tempo_atual}) \cdot 60
+    \end{equation}
+
+    O programa envia o valor cálculado ao broker a cada 0.5 segundo.
+    No rolo foi colacado um nível com 2 milimetros para nível de detecção, o sensor foi regulado para o nível manualmente no \textit{trimpot} de ajuste. O sensor foi fixado em um suporte com consta na Fig.\ref{suport_sensor}
+
+    \begin{figure}[!ht]
+    	\centering
+       		\includegraphics[scale=0.45]{Figuras/suporte_rpm.jpeg}
+        \caption{Suporte do sensor de velocidade.}
+        \label{suport_sensor}
+    \end{figure}
 
 \subsection{Sistema de elevação e Estrutura Dianteira}
 
